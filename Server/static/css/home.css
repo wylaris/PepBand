@@ -1,0 +1,14 @@
+#calendar {
+    padding-top: 20px;
+    padding-right: 55px;
+    padding-left: 55px;
+}
+
+.calendar-buttons {
+    padding-top: 10px;
+    padding-right: 55px;
+}
+
+.calendar-body h3 {
+    padding-left: 60px;
+}

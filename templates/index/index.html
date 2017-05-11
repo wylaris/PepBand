@@ -1,0 +1,130 @@
+{% extends "index/baseindex.html" %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/cover.css" %} rel="stylesheet">
+    <link href={% static "css/register.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="site-wrapper">
+        <div class="masthead clearfix">
+            <div class="inner">
+                <h3 class="masthead-brand">RIT PepBand</h3>
+                <nav>
+                    <ul class="nav masthead-nav">
+                        <li class="active" id="home"><a href="/" class="sign">Home</a></li>
+
+                        <li id="signin"><a href="#SignIn" class="sign">Sign In</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-------------------------------------------- Home --------------------------------------------------------->
+        <div class="site-wrapper-inner">
+
+            <div class="cover-container home">
+                <div class="inner cover">
+                    <h1 class="cover-heading">RIT PepBand</h1>
+                    <p class="lead">Welcome to the RIT PepBand website - Serving "The best pepband in the land" for all
+                        your
+                        musical needs.</p>
+                    <p class="lead">
+                        <a href="#SignIn" class="btn btn-lg btn-default col sign">Sign In</a>
+
+                </div>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-------------------------------------------- Sign In --------------------------------------------------------->
+    <div class="sign-in">
+        <div class="container">
+            <div class="row main">
+                <div class="panel-heading">
+                    <div class="panel-title text-center">
+                        <h1 class="title">RIT PepBand Login</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-login main-center">
+                <form class="form-horizontal" method="post" id="loginform"> {% csrf_token %}
+                    <div class="form-group">
+                        <div class="alert-danger">
+                            <strong id="errorlogin">{{ login.errors }}</strong>
+                        </div>
+                        <label for="usernamelog" class="col-sm-2 control-label">Username</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" placeholder="Username" name="usernamelog" id="usernamelog"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordlog" class="col-sm-2 control-label">Password</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="password" placeholder="Password" name="passwordlog" id="passwordlog"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button" id="login-button">
+                            Log In
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="mastfoot">
+        <div class="inner">
+            <p>RIT PepBand 2017</p>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src={% static "js/index.js" %}></script>
+
+    <script>
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+        //there are better ways to do this but I am really lazy
+        {% if pound == "SignUp" %}
+
+            var signIn = $('.sign-in');
+            var home = $('.home');
+
+            $('#signin').removeClass('active');
+            $('#signout').addClass('active');
+            $('#home').removeClass('active');
+            signIn.hide(0, function () {
+                home.hide(0, function () {
+                });
+            });
+        {% endif %}
+    </script>
+
+{% endblock %}
