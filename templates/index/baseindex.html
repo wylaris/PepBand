@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
+    <link rel="shortcut icon" type="image/png"
+          href="http://sheldonconrich.co.uk/wp-content/uploads/2016/06/cropped-sheldon-music-favicon.png"/>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +19,8 @@
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css/">
     <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT" rel="stylesheet">
 
-      {% block styles %}
-      {% endblock %}
+    {% block styles %}
+    {% endblock %}
 
 
 
@@ -28,54 +31,47 @@
     <![endif]-->
 
 
-  </head>
+</head>
 
-  <body>
-    {% block navbar %}
+<body>
+{% block navbar %}
 
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            < class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">HealthNet</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    < class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">HealthNet</a>
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+        <form class="navbar-form navbar-right" method="post" action=/>{% csrf_token %}
+            <div class="form-group">
+                <input type="text" placeholder="Username" name="username" id="username" class="form-control">
             </div>
-
-            <div id="navbar" class="navbar-collapse collapse">
-                {% if user.is_authenticated %}
-                    <div class="navbar-right navbar-form">
-                        <div class="navbar-brand" style="margin-top: -10px">You are logged in as {{ user.first_name }} {{ user.last_name }}  </div>
-                        <a href="/" class="btn btn-danger" role="button">Log Out</a>
-                    </div>
-                {% else %}
-                    <form class="navbar-form navbar-right" method="post" action=/ >{% csrf_token %}
-                        <div class="form-group">
-                            <input type="text" placeholder="Username" name="username" id="username"  class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" name="password" id="password" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                        <a href="/" class="btn btn-success" role="button">Register</a>
-                    </form>
-                {% endif %}
+            <div class="form-group">
+                <input type="password" placeholder="Password" name="password" id="password" class="form-control">
             </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+        </form>
+    </div>
 
-    {% endblock %}
+{% endblock %}
 
-    {% block content %}
-    {% endblock %}
+{% block content %}
+{% endblock %}
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
-   {% block scripts %}
-    {% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+{% block scripts %}
+{% endblock %}
 
-  </body>
+</body>
 </html>

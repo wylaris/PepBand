@@ -1,0 +1,18 @@
+{% extends "dashboard/base.html" %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">RIT Pep Band Constitution</h1></div>
+    </div>
+    <p></p>
+    <embed src="http://www.pdf995.com/samples/pdf.pdf" width="500" height="375" type='application/pdf'>
+    <td class="table-content"><a href="documents/PepBandConstitution.pdf" target="_blank">Constitution</a></td>
+				<td class="type"><img src="media/pdf.png" alt="PDF" height="12" width="12" />&#032;PDF</td>
+				<td class="date">September 15, 2016
+{% endblock %}

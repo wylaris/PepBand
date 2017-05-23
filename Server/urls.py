@@ -19,5 +19,13 @@ from PepBandWebsite import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='index')
+    url(r'^$', views.index, name='index'),
+    url(r'^login/$', views.login, name='login'),
+    # url(r'^auth/$', views.logout, name='auth'),
+    # url(r'^loggedin/$', views.loggedin, name='loggedin'),
+    # url(r'^invalid/$', views.invalid, name='invalid'),
+    url(r'^eboard/$', views.eboard, name='eboard'),
+    url(r'^section_leaders/$', views.section_leaders, name='section_leaders'),
+    url(r'^constitution/$', views.constitution, name='constitution'),
+    url(r'^home/$', views.home, name='home'),
 ]

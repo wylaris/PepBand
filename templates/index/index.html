@@ -20,7 +20,7 @@
                     <ul class="nav masthead-nav">
                         <li class="active" id="home"><a href="/" class="sign">Home</a></li>
 
-                        <li id="signin"><a href="#SignIn" class="sign">Sign In</a></li>
+                        <li id="signin"><a href="login/" class="sign">Sign In</a></li>
                     </ul>
                 </nav>
             </div>
@@ -35,8 +35,7 @@
                         your
                         musical needs.</p>
                     <p class="lead">
-                        <a href="#SignIn" class="btn btn-lg btn-default col sign">Sign In</a>
-
+                        <a href="login/" class="btn btn-lg btn-default col sign">Sign In</a>
                 </div>
                 </p>
             </div>
@@ -112,7 +111,7 @@
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
 
         //there are better ways to do this but I am really lazy
-        {% if pound == "SignUp" %}
+        {% if pound == "SignIn" %}
 
             var signIn = $('.sign-in');
             var home = $('.home');
@@ -122,6 +121,7 @@
             $('#home').removeClass('active');
             signIn.hide(0, function () {
                 home.hide(0, function () {
+                    signIn.show();
                 });
             });
         {% endif %}
