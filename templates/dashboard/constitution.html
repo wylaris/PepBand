@@ -6,13 +6,31 @@
     <link href={% static "css/info.css" %} rel="stylesheet">
 {% endblock %}
 
+{% block options %}
+    <li>
+        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i
+                class="fa fa-fw fa-folder-open"></i> Information<i
+                class="fa fa-fw fa-caret-down"></i></a>
+        <ul id="mess" class="collapse">
+            <li>
+                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>
+            </li>
+            <li>
+                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>
+            </li>
+            <li>
+                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
+            </li>
+        </ul>
+    </li>
+    </ul>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-12"><h1 class="text-center">RIT Pep Band Constitution</h1></div>
     </div>
     <p></p>
     <embed src="http://www.pdf995.com/samples/pdf.pdf" width="500" height="375" type='application/pdf'>
-    <td class="table-content"><a href="documents/PepBandConstitution.pdf" target="_blank">Constitution</a></td>
-				<td class="type"><img src="media/pdf.png" alt="PDF" height="12" width="12" />&#032;PDF</td>
-				<td class="date">September 15, 2016
 {% endblock %}
