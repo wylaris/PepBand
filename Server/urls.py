@@ -18,16 +18,17 @@ from django.contrib import admin
 from PepBandWebsite import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'),
-    url(r'^login/$', views.login, name='login'),
-    url(r'^auth/$', views.auth_view, name='auth_view'),
-    # url(r'^loggedin/$', views.loggedin, name='loggedin'),
-    # url(r'^invalid/$', views.invalid, name='invalid'),
-    url(r'^eboard/$', views.eboard, name='eboard'),
-    url(r'^section_leaders/$', views.section_leaders, name='section_leaders'),
-    url(r'^constitution/$', views.constitution, name='constitution'),
-    url(r'^home/$', views.home, name='home'),
-    url(r'^admin_page/$', views.admin_page, name='admin_page'),
-    url(r'^new_song/$', views.new_song, name='new_song'),
+    url(r'^admin/', admin.site.urls), #URL for the admin site
+    url(r'^$', views.index, name='index'), #URL for the landing page
+    url(r'^login/$', views.login, name='login'), #URL for the login page (will be the landing page)
+    url(r'^auth/$', views.auth_view, name='auth_view'), #URL for the authentication page
+    url(r'^eboard/$', views.eboard, name='eboard'),  #URL for the eboard page
+    url(r'^section_leaders/$', views.section_leaders, name='section_leaders'), #URL for the section leader page
+    url(r'^constitution/$', views.constitution, name='constitution'),  #URL for the constitution page
+    url(r'^home/$', views.home, name='home'),  #URL for the dashboard page
+    url(r'^admin_page/$', views.admin_page, name='admin_page'),  #URL for the admin page
+    #url(r'^new_song/$', views.new_song, name='new_song'),  #URL for adding a song to the database
+    url(r'^memes/$', views.memes, name='memes'),  #URL for the memes page
+    #url(r'^music/$', views.songs, name='songs'), #URL for the music page
+    #url(r'^music/music/$', views.music, name='music'), #URL for the private music server
 ]

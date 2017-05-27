@@ -1,9 +1,15 @@
+"""
+May or may not be used
+"""
 from django import forms
 
 from PepBandWebsite.models import Song
 
 
 class addSong(forms.ModelForm):
+    """
+    Adds a song to the database
+    """
     title = forms.CharField(required=True)
     public = forms.BooleanField(required=True)
 
@@ -22,6 +28,9 @@ class addSong(forms.ModelForm):
 
 
 class changeSong(forms.ModelForm):
+    """
+    Changes the fields for a song
+    """
     title = forms.CharField(required=True)
     public = forms.BooleanField(required=True)
 
