@@ -3,7 +3,7 @@ May or may not be used
 """
 from django import forms
 
-from PepBandWebsite.models import Song
+from PepBandWebsite.models import Song, Meme
 
 
 class addSong(forms.ModelForm):
@@ -46,4 +46,22 @@ class changeSong(forms.ModelForm):
         if commit:
             entry.save()
 
+        return entry
+
+class addMeme(forms.ModelForm):
+    """
+    Adds a meme to the database
+    """
+    name = forms.CharField(required=True)
+
+    class Meta:
+        model = Song
+        fields = ("name")
+
+    def save(self, commit=True):
+        entry = Meme()
+        entry.name = self.cleaned_data['title']
+
+        if commit:
+            entry.save()
         return entry

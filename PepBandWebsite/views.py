@@ -11,7 +11,25 @@ import dropbox
 
 
 #Load Webpages
-from PepBandWebsite.models import Song
+from PepBandWebsite.models import Song, Meme
+
+
+memeList = dropbox.Dropbox('3Ib-6gw6SkAAAAAAAAAAifOLl9FjWeqovxj166ITwfh-lB7mJMQCB0kjM_he0Ajd')
+songList = dropbox.Dropbox('8RVK_BdoyPwAAAAAAAABpRxWzjgsOOFxbAAy4TNYxgrnPaiXenAeeLQxNxOWuuqP')
+
+songs = []
+
+for entry in songList.files_list_folder('').entries:
+    File = type(entry)
+
+for entry in songList.files_list_folder('/Pep Band Music Server').entries:
+    if type(entry) == File:
+        songs.append(entry)
+
+#def addSongs(songs)
+#   for song in songs:
+#       if !db.contains song:
+#           db.add(song.name, private)
 
 
 def index(request):
@@ -110,19 +128,14 @@ def memes(request):
     :param request: 
     :return: 
     """
-    memeList = dropbox.Dropbox('3Ib-6gw6SkAAAAAAAAAAifOLl9FjWeqovxj166ITwfh-lB7mJMQCB0kjM_he0Ajd')
-    for entry in memeList.files_list_folder('').entries:
-        print("   ", entry.name)
-        File = type(entry)
 
     entries = []
     for entry in memeList.files_list_folder('/Testing').entries:
-        print("   ", entry, type(entry))
+        entry.name = 'media/' + entry.name
         entries.append(entry)
-        if type(entry) == File:
-            print("       ", "This is a File")
-        else:
-            print("       ", "This is a Folder")
+    print(entries)
+    #entries = sorted(entries)
+
     return render(request, 'dashboard/memes.html', {"list": entries})
 
 def songs(request):
@@ -131,4 +144,13 @@ def songs(request):
     :param request: 
     :return: 
     """
-    pass
+    entries = []
+
+    for entry in songList.files_list_folder('/Pep Band Music Server').entries:
+        if type(entry) == File:
+            entries.append(entry)
+    print(entries)
+    return render(request, 'dashboard/music.html', {"list": entries})
+
+def handler(request):
+    return render(request, "dashboard/admin_page.html")

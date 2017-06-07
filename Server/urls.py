@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from PepBandWebsite import views
+from Server import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls), #URL for the admin site
@@ -29,6 +30,8 @@ urlpatterns = [
     url(r'^admin_page/$', views.admin_page, name='admin_page'),  #URL for the admin page
     #url(r'^new_song/$', views.new_song, name='new_song'),  #URL for adding a song to the database
     url(r'^memes/$', views.memes, name='memes'),  #URL for the memes page
-    #url(r'^music/$', views.songs, name='songs'), #URL for the music page
+    url(r'^static/[%0-9a-zA-Z_]/$', views.memes, name='memes'),
+    url(r'^music/$', views.songs, name='songs'),  # URL for the music page
+    url(r'^music/[%0-9a-zA-Z_]$', views.handler, name='songHandler'), #URL for the music page
     #url(r'^music/music/$', views.music, name='music'), #URL for the private music server
 ]

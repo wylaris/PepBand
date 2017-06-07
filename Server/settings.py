@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sites',
     'django.contrib.sessions',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
     'Server',
     'PepBandWebsite',
@@ -50,7 +49,6 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -124,5 +122,7 @@ SITE_ID = 1
 STATIC_ROOT = ''
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
+MEDIA_ROOT = '../Server/static/media/'
+MEDIA_URL = '../media/'
 STATIC_URL = '/static/'
 # Additional locations of static files

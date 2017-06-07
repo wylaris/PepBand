@@ -27,11 +27,12 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-12"><h1 class="text-center">Memes</h1></div>
+        <div class="col-md-12"><h1 class="text-center">Music</h1></div>
     </div>
     <div class="row text-center">
         {% for entries in list %}
-            <p>{{ entries.name }}</p>
-            <img src={% static "{{ entries.name }}" %} alt="NA">
+            <li>
+                <a href="/music/{{ entries.name }}"><i class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
+            </li>
         {% endfor %}
 {% endblock %}
