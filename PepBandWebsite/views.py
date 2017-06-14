@@ -27,8 +27,8 @@ for entry in songList.files_list_folder('/Pep Band Music Server').entries:
         songEntries.append(entry)
 
 for entry in memeList.files_list_folder('/Testing').entries:
-    memeEntries.append(entry.name)
-memeEntries.sort()
+    if entry.name != "1Teryn.JPG":
+        memeEntries.append(entry.name)
 
 
 # entries = sorted(entries)
