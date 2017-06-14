@@ -71,32 +71,37 @@
                                 <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
                             </li>
                         </ul>
+                        <div class="row text-center">
+                            {% for entries in list %}
+                                <li>
+                                    <a href="/music/{{ entries.name }}"><i
+                                            class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
+                                </li>
+                            {% endfor %}
                     </li>
-                    </ul>
-                    </div>
                 {% endblock %}
 
-</div>
-<!-- /.navbar-collapse -->
-</nav>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
 
-<div id="page-wrapper">
+    <div id="page-wrapper">
 
-    <div class="container-fluid">
-        {% block content %}
-            <div class="col-md-12">
-                <input type="button" class="btn btn-xl btn-primary"
-                       value="Memes Page" onclick="location.href
+        <div class="container-fluid">
+            {% block content %}
+                <div class="col-md-12">
+                    <input type="button" class="btn btn-xl btn-primary"
+                           value="Memes Page" onclick="location.href
                         = '/memes';">
-                <input type="button" class="btn btn-xl btn-primary"
-                       value="Music Page" onclick="location.href
+                    <input type="button" class="btn btn-xl btn-primary"
+                           value="Music Page" onclick="location.href
                         = '/music';">
-            </div>
-        {% endblock %}
-    </div>
-    <!-- /.container-fluid -->
+                </div>
+            {% endblock %}
+        </div>
+        <!-- /.container-fluid -->
 
-</div>
+    </div>
 
 
 </div>

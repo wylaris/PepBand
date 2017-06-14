@@ -49,3 +49,5 @@ Temporary Items
 *.mp3
 Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 *.xml
+*.xml
+.idea/workspace.xml

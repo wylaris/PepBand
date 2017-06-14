@@ -27,7 +27,8 @@ for entry in songList.files_list_folder('/Pep Band Music Server').entries:
         songEntries.append(entry)
 
 for entry in memeList.files_list_folder('/Testing').entries:
-    memeEntries.append(entry)
+    memeEntries.append(entry.name)
+memeEntries.sort()
 
 
 # entries = sorted(entries)
@@ -82,7 +83,7 @@ def home(request):
     :param request: 
     :return: 
     """
-    return render(request, "dashboard/home.html")
+    return render(request, "dashboard/home.html", {"list": songEntries})
 
 
 def admin_page(request):
