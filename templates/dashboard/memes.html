@@ -32,6 +32,6 @@
     <div class="row text-center">
         {% for entries in list %}
             <p>{{ entries.name }}</p>
-            <img src={% static "{{ entries.name }}" %} alt="NA">
+            <img src={% static "media/{{ entries.name }}" %} alt="NA">
         {% endfor %}
 {% endblock %}

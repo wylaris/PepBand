@@ -22,6 +22,15 @@
                 <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
             </li>
         </ul>
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">Music</h1></div>
+        </div>
+        <div class="row text-center">
+            {% for entries in list %}
+                <li>
+                    <a href="/music/{{ entries.name }}"><i class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
+                </li>
+            {% endfor %}
     </li>
 {% endblock %}
 
@@ -32,7 +41,7 @@
     <div class="row text-center">
         {% for entries in list %}
             <li>
-                <a href="/music/{{ entries.name }}"><i class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
+                <a href={% static "music/Beverly Hills" %}><i class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
             </li>
         {% endfor %}
 {% endblock %}

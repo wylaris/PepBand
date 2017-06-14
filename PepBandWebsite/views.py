@@ -9,24 +9,31 @@ from django.template.context_processors import csrf
 from django.template import RequestContext
 import dropbox
 
-
-#Load Webpages
+# Load Webpages
 from PepBandWebsite.models import Song, Meme
-
 
 memeList = dropbox.Dropbox('3Ib-6gw6SkAAAAAAAAAAifOLl9FjWeqovxj166ITwfh-lB7mJMQCB0kjM_he0Ajd')
 songList = dropbox.Dropbox('8RVK_BdoyPwAAAAAAAABpRxWzjgsOOFxbAAy4TNYxgrnPaiXenAeeLQxNxOWuuqP')
 
-songs = []
+songsList = []
+songEntries = []
+memeEntries = []
 
 for entry in songList.files_list_folder('').entries:
     File = type(entry)
 
 for entry in songList.files_list_folder('/Pep Band Music Server').entries:
     if type(entry) == File:
-        songs.append(entry)
+        songEntries.append(entry)
 
-#def addSongs(songs)
+for entry in memeList.files_list_folder('/Testing').entries:
+    memeEntries.append(entry)
+
+
+# entries = sorted(entries)
+
+
+# def addSongs(songs)
 #   for song in songs:
 #       if !db.contains song:
 #           db.add(song.name, private)
@@ -39,7 +46,8 @@ def index(request):
     :return: 
     """
     return render(request, "index/index.html")
-    #return HttpResponse("Hello, world.  Welcome to the RIT Pep Band.")
+    # return HttpResponse("Hello, world.  Welcome to the RIT Pep Band.")
+
 
 def eboard(request):
     """
@@ -49,6 +57,7 @@ def eboard(request):
     """
     return render(request, "dashboard/eboard.html")
 
+
 def section_leaders(request):
     """
     Loads the page for the section leader page
@@ -56,6 +65,7 @@ def section_leaders(request):
     :return: 
     """
     return render(request, "dashboard/section_leaders.html")
+
 
 def constitution(request):
     """
@@ -65,6 +75,7 @@ def constitution(request):
     """
     return render(request, "dashboard/constitution.html")
 
+
 def home(request):
     """
     Loads the page for the dashboard when you login
@@ -73,6 +84,7 @@ def home(request):
     """
     return render(request, "dashboard/home.html")
 
+
 def admin_page(request):
     """
     Loads the admin page to give tools to admin
@@ -80,6 +92,7 @@ def admin_page(request):
     :return: 
     """
     return render(request, "dashboard/admin_page.html")
+
 
 # def new_song(request):
 #     form = Song()
@@ -93,7 +106,7 @@ def admin_page(request):
 #             print("Form is not valid")
 #     return render(request, 'dashboard/admin_page.html')
 
-#Login
+# Login
 def login(request):
     """
     Controls the login for the user
@@ -103,6 +116,7 @@ def login(request):
     c = {}
     c.update(csrf(request))
     return render_to_response('dashboard/login.html', c)
+
 
 def auth_view(requst):
     """
@@ -120,7 +134,8 @@ def auth_view(requst):
     else:
         return HttpResponseRedirect('/')
 
-#Dropbox
+
+# Dropbox
 
 def memes(request):
     """
@@ -128,15 +143,8 @@ def memes(request):
     :param request: 
     :return: 
     """
+    return render(request, 'dashboard/memes.html', {"list": memeEntries})
 
-    entries = []
-    for entry in memeList.files_list_folder('/Testing').entries:
-        entry.name = 'media/' + entry.name
-        entries.append(entry)
-    print(entries)
-    #entries = sorted(entries)
-
-    return render(request, 'dashboard/memes.html', {"list": entries})
 
 def songs(request):
     """
@@ -144,13 +152,8 @@ def songs(request):
     :param request: 
     :return: 
     """
-    entries = []
+    return render(request, 'dashboard/music.html', {"list": songEntries})
 
-    for entry in songList.files_list_folder('/Pep Band Music Server').entries:
-        if type(entry) == File:
-            entries.append(entry)
-    print(entries)
-    return render(request, 'dashboard/music.html', {"list": entries})
 
-def handler(request):
-    return render(request, "dashboard/admin_page.html")
+def show_song(request, name):
+    return render(request, "dashboard/success.html")

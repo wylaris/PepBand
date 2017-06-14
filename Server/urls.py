@@ -32,6 +32,6 @@ urlpatterns = [
     url(r'^memes/$', views.memes, name='memes'),  #URL for the memes page
     url(r'^static/[%0-9a-zA-Z_]/$', views.memes, name='memes'),
     url(r'^music/$', views.songs, name='songs'),  # URL for the music page
-    url(r'^music/[%0-9a-zA-Z_]$', views.handler, name='songHandler'), #URL for the music page
+    url(r'^music/[/./]/$', views.show_song, name='songHandler'), #URL for the music page
     #url(r'^music/music/$', views.music, name='music'), #URL for the private music server
 ]
