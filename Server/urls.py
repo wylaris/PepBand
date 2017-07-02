@@ -32,4 +32,7 @@ urlpatterns = [
     url(r'^music/$', views.songs, name='songs'),  # URL for the music page
     #url(r'^music/(?P<id>[0-9]+)/$', views.show_song, name='songHandler'),
     url(r'^music/(?P<title>[\w\-]+)/$', views.show_song, name='songHandler'), #URL for the music page
+    url(r'^home/(?P<title>[\w\-]+)/$', views.show_song, name='songHandler'),  # URL for the music page
+    url(r'^conductor/$', views.conductor, name='songs'),  # URL for the music page
+    url(r'^president/$', views.president, name='songs'),  # URL for the music page
 ]

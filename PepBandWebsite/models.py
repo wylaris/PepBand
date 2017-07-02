@@ -9,8 +9,8 @@ class Song(models.Model):
     Model for songs in the database
     """
     CHOICES = (
-        ('Pu', 'Public'),
-        ('Pr', 'Private'),
+        ('Public', 'Public'),
+        ('Private', 'Private'),
     )
     title = models.CharField(max_length=200)
     status = models.CharField(max_length=2, choices=CHOICES, default='Pr')

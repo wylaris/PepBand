@@ -26,16 +26,27 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-12"><h1 class="text-center">Music</h1></div>
-    </div>
-    <div class="row text-center">
-        <table id="songTable" align="center">
-            {% for entries in list %}
-                <tr>
-                    <td><a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>
-                </tr>
-            {% endfor %}
-        </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">Music</h1></div>
+            <form method="POST" action="">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <h3><p class="text-success">Title</p></h3>
+            </div>
+            <div class="col-md-6">
+                <h3><p class="text-success">Status</p></h3>
+            </div>
+        </div>
+        <hr>
+        {% for entry in list %}
+            <div class="row text-center">
+                <div class="col-md-6">{{ entry.title }}</div>
+                <div class="col-md-6">{{ entry.status }}</div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
