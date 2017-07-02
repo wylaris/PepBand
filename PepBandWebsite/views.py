@@ -7,6 +7,7 @@ from django.http import *
 from django.contrib import auth
 from django.template.context_processors import csrf
 from os import listdir, walk
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Load Webpages
 from PepBandWebsite.models import Song
@@ -38,6 +39,17 @@ for entry in songEntries:
 publicSongList = Song.objects.filter(status='Pu')
 totalSongList = Song.objects.all
 
+def checkAdmin(user):
+    return user.groups.filter(name="Admin")
+
+def checkMember(user):
+    return user.groups.filter(name="Member")
+
+def checkConductor(user):
+    return user.groups.filter(name="Conductor")
+
+def checkPresident(user):
+    return user.groups.filter(name="President")
 
 def index(request):
     """
@@ -46,18 +58,20 @@ def index(request):
     :return: 
     """
     return render(request, "index/index.html")
-    # return HttpResponse("Hello, world.  Welcome to the RIT Pep Band.")
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def eboard(request):
     """
     Loads the page for the eboard information
     :param request: 
     :return: 
     """
+
     return render(request, "dashboard/eboard.html")
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def section_leaders(request):
     """
     Loads the page for the section leader page
@@ -67,6 +81,7 @@ def section_leaders(request):
     return render(request, "dashboard/section_leaders.html")
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def constitution(request):
     """
     Loads the page for constitution page
@@ -76,6 +91,7 @@ def constitution(request):
     return render(request, "dashboard/constitution.html")
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def home(request):
     """
     Loads the page for the dashboard when you login
@@ -85,6 +101,7 @@ def home(request):
     return render(request, "dashboard/home.html", {"list": songEntries})
 
 
+@user_passes_test(checkAdmin, login_url='/login/')
 def admin_page(request):
     """
     Loads the admin page to give tools to admin
@@ -93,18 +110,6 @@ def admin_page(request):
     """
     return render(request, "dashboard/admin_page.html")
 
-
-# def new_song(request):
-#     form = Song()
-#     if request.method == 'POST':
-#         form = Song(request.POST)
-#         if form.is_valid():
-#             print("Form is valid")
-#             form.save()
-#             args['success'] = True
-#         else:
-#             print("Form is not valid")
-#     return render(request, 'dashboard/admin_page.html')
 
 # Login
 def login(request):
@@ -135,8 +140,7 @@ def auth_view(requst):
         return HttpResponseRedirect('/')
 
 
-# Dropbox
-
+@user_passes_test(checkMember, login_url='/login/')
 def memes(request):
     """
     The sweet sweet meme page that has been long awaited
@@ -146,6 +150,7 @@ def memes(request):
     return render(request, 'dashboard/memes.html', {"list": memeEntries})
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def songs(request):
     """
     Heart of the song page that loads all the music
