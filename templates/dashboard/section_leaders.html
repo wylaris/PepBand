@@ -33,133 +33,20 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
+            {% for entry in list %}
+                <div class="col-md-12">
+                    <div class="media">
+                        <div class="media-left">
                     </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Flutes</h4>
-                        <p>Krysia Browka <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Clarinets </h4>
-                        <p>Nicole Pannullo <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{ entry.section }}</h4>
+                            <p>&nbsp; &nbsp;{{ entry }} <br> &nbsp; &nbsp;Cell: <a
+                                href="tel:1231231234">{{ entry.cell }}</a> <br> &nbsp; &nbsp;Email: <a
+                                href="mailto:fml1234@rit.edu">{{ entry.email }}</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Alto Saxophones </h4>
-                        <p>Derek Fought <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Trumpets </h4>
-                        <p>Peyton Schmidt <br> Cell: <a href="tel:7162088050">(716)-208-8050</a> <br> Email: <a
-                                href="mailto:pcs7709@rit.edu">pcs7709@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Mellophones </h4>
-                        <p>Mike Troise <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Tenor Saxophones </h4>
-                        <p>Callie Donahue <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Trombones </h4>
-                        <p>Brian Lake <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Tubas </h4>
-                        <p>Working on it <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-left">
-                        <a>
-                            <img class="media-object" src="" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <h4 class="media-heading">Percussion </h4>
-                        <p>Tommy Bohde <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

@@ -1,10 +1,12 @@
+{% extends "dashboard/base.html" %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" type="image/png"
+          href="http://sheldonconrich.co.uk/wp-content/uploads/2016/06/cropped-sheldon-music-favicon.png"/>
     {% load static %}
-        <link rel="shortcut icon" type="image/png"
-              href="{% static "media/favicon.ico" %}"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +17,7 @@
 
 
     <!-- Bootstrap Core CSS -->
-    <<link href="{% static "admin/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "admin/css/bootstrap.min.css" %}" rel="stylesheet">
 
 
     <!-- Custom CSS -->
@@ -29,7 +31,6 @@
           type="text/css">
 
     {% block styles %}
-        <link href={% static "css/info.css" %} rel="stylesheet">
     {% endblock %}
 
 </head>
@@ -48,26 +49,53 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <!--<a class="navbar-brand" href="/home">RIT Pepband</a>-->
-            <a class="navbar-brand" href="/home"> <img src={% static "media/banner.jpg" %} alt="NA"></a>
+            <a class="navbar-brand" href="/">RIT Pep Band</a>
         </div>
 
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 {% block options %}
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i
+                                class="fa fa-fw fa-folder-open"></i> Information<i
+                                class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="mess" class="collapse">
+                            <li>
+                                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>
+                            </li>
+                            <li>
+                                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>
+                            </li>
+                            <li>
+                                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
+                            </li>
+                        </ul>
+                        <div class="row text-center">
+                            {% for entries in list %}
+                                <li>
+                                    <a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a>
 
+                                </li>
+                            {% endfor %}
+                    </li>
                 {% endblock %}
 
-                <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.navbar-collapse -->
     </nav>
 
     <div id="page-wrapper">
 
         <div class="container-fluid">
             {% block content %}
-                <div class="footer">This footer will always be positioned at the bottom of the page, but <strong>not
-                    fixed</strong>.
+                <div class="col-md-12">
+                    <input type="button" class="btn btn-xl btn-primary"
+                           value="Memes Page" onclick="location.href
+                        = '/memes';">
+                    <input type="button" class="btn btn-xl btn-primary"
+                           value="Music Page" onclick="location.href
+                        = '/music';">
                 </div>
             {% endblock %}
         </div>
@@ -83,9 +111,6 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="{% static "admin/js/bootstrap.min.js" %}"></script>
-{% comment %}
-<script type="text/javascript" src="{% static "js/messages.js" %}"></script>
-{% endcomment %}
 <!-- Morris Cadmin/harts JavaScript -->
 <!-- <script src="{% static "admin/js/plugins/morris/raphael.min.js" %}"></script>
     <script src="{% static "admin/js/plugins/morris/morris.min.js" %}"></script>
@@ -93,9 +118,7 @@
 
 
 {% block scripts %}
-    {% comment %}<script type="text/javascript" src="{% static "js/messages.js" %}"></script>{% endcomment %}
 {% endblock %}
-
 
 </body>
 

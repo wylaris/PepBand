@@ -10,7 +10,7 @@ from os import listdir, walk
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Load Webpages
-from PepBandWebsite.models import Song
+from PepBandWebsite.models import Song, eBoard, Section
 
 memeList = []
 songList = []
@@ -38,6 +38,9 @@ for entry in songEntries:
 
 publicSongList = Song.objects.filter(status='Pu')
 totalSongList = Song.objects.all
+
+eBoardList = eBoard.objects.all
+sectionList = Section.objects.all()
 
 def checkAdmin(user):
     return user.groups.filter(name="Admin")
@@ -68,7 +71,7 @@ def eboard(request):
     :return: 
     """
 
-    return render(request, "dashboard/eboard.html")
+    return render(request, "dashboard/eboard.html", {"list": eBoardList})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -78,7 +81,7 @@ def section_leaders(request):
     :param request: 
     :return: 
     """
-    return render(request, "dashboard/section_leaders.html")
+    return render(request, "dashboard/section_leaders.html", {"list": sectionList})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -98,7 +101,7 @@ def home(request):
     :param request: 
     :return: 
     """
-    return render(request, "dashboard/home.html", {"list": songEntries})
+    return render(request, "dashboard/home.html", {"list": publicSongList})
 
 
 @user_passes_test(checkAdmin, login_url='/login/')

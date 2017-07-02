@@ -109,7 +109,7 @@ code, kbd, pre, samp {
 }
 
 button, input, optgroup, select, textarea {
-    margin: 0;
+    margin: 10px;
     font: inherit;
     color: inherit
 }
@@ -1352,15 +1352,15 @@ html {
 
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.42857143;
     color: #333;
     background-color: #fff
 }
 
 button, input, select, textarea {
-    font-family: inherit;
-    font-size: inherit;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
     line-height: inherit
 }
 
@@ -4601,7 +4601,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
 .navbar-fixed-top {
     top: 0;
-    border-width: 0 0 1px
+    border-width: 0 0 0px
 }
 
 .navbar-fixed-bottom {
@@ -4612,7 +4612,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 
 .navbar-brand {
     float: left;
-    height: 50px;
+    height: 75px;
     padding: 15px 15px;
     font-size: 18px;
     line-height: 20px

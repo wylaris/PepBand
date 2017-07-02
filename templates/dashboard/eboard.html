@@ -34,91 +34,21 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="media">
-                        <div class="media-left">
-                            <a>
-                                <img class="media-object" src="" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">President</h4>
-                            <p>Andrew Zgoda <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                    href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="col-md-12">
-                    <div class="media">
-                        <div class="media-left">
-                            <a>
-                                <img class="media-object" src="" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Conductor </h4>
-                            <p>Megan Detwiler <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                    href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
+                {% for entry in list %}
+                    <div class="col-md-12">
+                        <div class="media">
+                            <div class="media-left">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ entry.position }}</h4>
+                                <p>&nbsp; &nbsp;{{ entry }} <br> &nbsp; &nbsp;Cell: <a
+                                        href="tel:1231231234">{{ entry.cell }}</a> <br> &nbsp; &nbsp;Email: <a
+                                        href="mailto:fml1234@rit.edu">{{ entry.email }}</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media">
-                        <div class="media-left">
-                            <a>
-                                <img class="media-object" src="" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Vice President </h4>
-                            <p>Jaccob Cozzarin <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                    href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media">
-                        <div class="media-left">
-                            <a>
-                                <img class="media-object" src="" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Vice President </h4>
-                            <p>Bao Thai <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                    href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media">
-                        <div class="media-left">
-                            <a>
-                                <img class="media-object" src="" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Treasurer </h4>
-                            <p>Melissa Barton <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                    href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media">
-                        <div class="media-left">
-                            <a>
-                                <img class="media-object" src="" alt="...">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <h4 class="media-heading">Secretary </h4>
-                            <p>Sarah Messner <br> Cell: <a href="tel:1231231234">(123)-123-1234</a> <br> Email: <a
-                                    href="mailto:fml1234@rit.edu">fml1234@rit.edu</a></p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
+    </div>
 {% endblock %}

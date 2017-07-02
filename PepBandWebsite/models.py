@@ -24,20 +24,20 @@ class eBoard(models.Model):
     Model for eBoard members
     """
     CHOICES = (
-        ('T', 'Treasurer'),
-        ('C', 'Conductor'),
-        ('VP', 'Vice President'),
-        ('S', 'Secretary'),
-        ('P', 'President'),
+        ('Treasurer', 'Treasurer'),
+        ('Conductor', 'Conductor'),
+        ('Vice President', 'Vice President'),
+        ('Secretary', 'Secretary'),
+        ('President', 'President'),
     )
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
-    position = models.CharField(max_length=2, choices=CHOICES)
+    position = models.CharField(max_length=15, choices=CHOICES)
     cell = models.CharField(max_length=14)
     email = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.firstName + self.lastName
+        return self.firstName +" " + self.lastName
 
 
 class Section(models.Model):
@@ -45,21 +45,21 @@ class Section(models.Model):
     Model for eBoard members
     """
     CHOICES = (
-        ('F', 'Flutes'),
-        ('Cl', 'Clarinets'),
-        ('AS', 'Alto Saxophones'),
-        ('Tpt', 'Trumpets'),
-        ('M', 'Mellophones'),
-        ('TS', 'Tenor Saxophones'),
-        ('Trb', 'Trombones'),
-        ('Tub', 'Tubas'),
-        ('P', 'Percussion'),
+        ('Flutes', 'Flutes'),
+        ('Clarinets', 'Clarinets'),
+        ('Saxophones', 'Alto Saxophones'),
+        ('Trumpets', 'Trumpets'),
+        ('Mellophones', 'Mellophones'),
+        ('Tenor Saxophones', 'Tenor Saxophones'),
+        ('Trombones', 'Trombones'),
+        ('Tubas', 'Tubas'),
+        ('Percussion', 'Percussion'),
     )
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
-    section = models.CharField(max_length=2, choices=CHOICES)
+    section = models.CharField(max_length=16, choices=CHOICES)
     cell = models.CharField(max_length=14)
     email = models.CharField(max_length=15)
 
     def __str__(self):
-        return self.firstName + self.lastName
+        return self.firstName +" " + self.lastName

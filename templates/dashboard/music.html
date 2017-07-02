@@ -22,12 +22,6 @@
                 <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
             </li>
         </ul>
-        <div class="row text-center">
-            {% for entries in list %}
-                <li>
-                    <a href="music/{{ entries }}"><i class="fa fa-fw fa-file"></i> {{ entries }}</a>
-                </li>
-            {% endfor %}
     </li>
 {% endblock %}
 
@@ -36,9 +30,36 @@
         <div class="col-md-12"><h1 class="text-center">Music</h1></div>
     </div>
     <div class="row text-center">
-        {% for entries in list %}
-            <li>
-                <a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a>
-            </li>
-        {% endfor %}
+        <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
+
+        <table id="songTable" align="center">
+            {% for entries in list %}
+                <tr>
+                    <td><a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("songTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 {% endblock %}
