@@ -3,7 +3,7 @@ May or may not be used
 """
 from django import forms
 
-from PepBandWebsite.models import Song, Meme
+from PepBandWebsite.models import Song, eBoard, Section
 
 
 class addSong(forms.ModelForm):
@@ -31,16 +31,14 @@ class changeSong(forms.ModelForm):
     """
     Changes the fields for a song
     """
-    title = forms.CharField(required=True)
     public = forms.BooleanField(required=True)
 
     class Meta:
         model = Song
-        fields = ('title', 'public')
+        fields = 'public'
 
     def save(self, commit=True, instance=None):
         entry = Song()
-        entry.title = self.cleaned_data['title']
         entry.public = self.cleaned_data['public']
 
         if commit:
@@ -48,20 +46,52 @@ class changeSong(forms.ModelForm):
 
         return entry
 
-class addMeme(forms.ModelForm):
+class changeEBoardName(forms.ModelForm):
     """
-    Adds a meme to the database
+    Changes the fields for an eBoard member
     """
-    name = forms.CharField(required=True)
+    firstName = forms.CharField(required=True)
+    lastName = forms.CharField(required=True)
+    cell = forms.RegexField(regex=r'^\+?1?\d{9,15}$', required=True)
+    email = forms.EmailField(required=True)
 
     class Meta:
-        model = Song
-        fields = ("name")
+        model = eBoard
+        fields = ('firstName', 'lastName', 'cell', 'email')
 
-    def save(self, commit=True):
-        entry = Meme()
-        entry.name = self.cleaned_data['title']
+    def save(self, commit=True, instance=None):
+        entry = Song()
+        entry.firstName = self.cleaned_data['firstName']
+        entry.lastName = self.cleaned_data['lastName']
+        entry.cell = self.cleaned_data['cell']
+        entry.email = self.cleaned_data['email']
 
         if commit:
             entry.save()
+
+        return entry
+
+class changeSectionName(forms.ModelForm):
+    """
+    Changes the fields for a section leader
+    """
+    firstName = forms.CharField(required=True)
+    lastName = forms.CharField(required=True)
+    cell = forms.RegexField(regex=r'^\+?1?\d{9,15}$', required=True)
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = Section
+        fields = ('firstName', 'lastName', 'cell', 'email')
+
+    def save(self, commit=True, instance=None):
+        entry = Song()
+        entry.firstName = self.cleaned_data['firstName']
+        entry.lastName = self.cleaned_data['lastName']
+        entry.cell = self.cleaned_data['cell']
+        entry.email = self.cleaned_data['email']
+
+        if commit:
+            entry.save()
+
         return entry

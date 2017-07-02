@@ -28,10 +28,8 @@ urlpatterns = [
     url(r'^constitution/$', views.constitution, name='constitution'),  #URL for the constitution page
     url(r'^home/$', views.home, name='home'),  #URL for the dashboard page
     url(r'^admin_page/$', views.admin_page, name='admin_page'),  #URL for the admin page
-    #url(r'^new_song/$', views.new_song, name='new_song'),  #URL for adding a song to the database
     url(r'^memes/$', views.memes, name='memes'),  #URL for the memes page
-    url(r'^static/[%0-9a-zA-Z_]/$', views.memes, name='memes'),
     url(r'^music/$', views.songs, name='songs'),  # URL for the music page
-    url(r'^music/[/./]/$', views.show_song, name='songHandler'), #URL for the music page
-    #url(r'^music/music/$', views.music, name='music'), #URL for the private music server
+    #url(r'^music/(?P<id>[0-9]+)/$', views.show_song, name='songHandler'),
+    url(r'^music/(?P<title>[\w\-]+)/$', views.show_song, name='songHandler'), #URL for the music page
 ]

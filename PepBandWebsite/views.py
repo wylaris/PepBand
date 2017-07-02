@@ -6,38 +6,37 @@ from django.shortcuts import render, resolve_url, render_to_response
 from django.http import *
 from django.contrib import auth
 from django.template.context_processors import csrf
-from django.template import RequestContext
-import dropbox
+from os import listdir, walk
 
 # Load Webpages
-from PepBandWebsite.models import Song, Meme
+from PepBandWebsite.models import Song
 
-memeList = dropbox.Dropbox('3Ib-6gw6SkAAAAAAAAAAifOLl9FjWeqovxj166ITwfh-lB7mJMQCB0kjM_he0Ajd')
-songList = dropbox.Dropbox('8RVK_BdoyPwAAAAAAAABpRxWzjgsOOFxbAAy4TNYxgrnPaiXenAeeLQxNxOWuuqP')
+memeList = []
+songList = []
 
 songsList = []
 songEntries = []
 memeEntries = []
 
-for entry in songList.files_list_folder('').entries:
-    File = type(entry)
+for file in listdir('Server\static\media'):
+    if (file != ("1Teryn.JPG")) and (file != ("banner.jpg")) and (file != ("favicon.ico")) and (
+                file != ("favicon.png")):
+        memeEntries.append(file)
 
-for entry in songList.files_list_folder('/Pep Band Music Server').entries:
-    if type(entry) == File:
-        songEntries.append(entry)
+for folder in listdir('Server\static\music'):
+    songEntries.append(folder)
 
-for entry in memeList.files_list_folder('/Testing').entries:
-    if entry.name != "1Teryn.JPG":
-        memeEntries.append(entry.name)
+songEntries = sorted(songEntries)
 
+for entry in songEntries:
+    if Song.objects.filter(title=entry):
+        pass
+    else:
+        song = Song(title=entry)
+        song.save()
 
-# entries = sorted(entries)
-
-
-# def addSongs(songs)
-#   for song in songs:
-#       if !db.contains song:
-#           db.add(song.name, private)
+publicSongList = Song.objects.filter(status='Pu')
+totalSongList = Song.objects.all
 
 
 def index(request):
@@ -153,8 +152,8 @@ def songs(request):
     :param request: 
     :return: 
     """
-    return render(request, 'dashboard/music.html', {"list": songEntries})
+    return render(request, 'dashboard/music.html', {"list": totalSongList})
 
 
-def show_song(request, name):
+def show_song(request, title):
     return render(request, "dashboard/success.html")

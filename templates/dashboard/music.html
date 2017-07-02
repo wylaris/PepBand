@@ -25,7 +25,7 @@
         <div class="row text-center">
             {% for entries in list %}
                 <li>
-                    <a href="/music/{{ entries.name }}"><i class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
+                    <a href="music/{{ entries }}"><i class="fa fa-fw fa-file"></i> {{ entries }}</a>
                 </li>
             {% endfor %}
     </li>
@@ -38,7 +38,7 @@
     <div class="row text-center">
         {% for entries in list %}
             <li>
-                <a href={% static "music/"|add:entries.name %}><i class="fa fa-fw fa-file"></i> {{ entries.name }}</a>
+                <a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a>
             </li>
         {% endfor %}
 {% endblock %}
