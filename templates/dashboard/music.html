@@ -35,7 +35,7 @@
         <table id="songTable" align="center">
             {% for entries in list %}
                 <tr>
-                    <td><a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>
+                    <td><a href={{ entries.slug }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>
                 </tr>
             {% endfor %}
         </table>

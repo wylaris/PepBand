@@ -27,25 +27,15 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-md-12"><h1 class="text-center">{{ song }}</h1></div>
+        <div class="col-md-12"><h1 class="text-center">{{ songs }}</h1></div>
     </div>
     <div class="row text-center">
         <table id="songTable" align="center">
+            {% for part in parts %}
             <tr>
-                <td><a href="jpg/"><i class="fa fa-fw fa-picture-o"></i> JPG</a></td>
+                <td><a href={{ part }}><i class="fa fa-fw fa-picture-o"></i>{{ part }}</a></td>
             </tr>
-            <tr>
-                <td><a href="pdf/"><i class="fa fa-fw fa-file-pdf-o"></i> PDF</a></td>
-            </tr>
+            {% endfor %}
         </table>
     </div>
-    <html>
-    <body>
-    {% if entries.video %}
-        <iframe width="560" height="315" src={{ ""|add:entry.video }} frameborder="0" allowfullscreen></iframe>
-        <p>yEs</p>
-    {% endif %}
-    <p>No</p>
-    </body>
-    </html>
 {% endblock %}

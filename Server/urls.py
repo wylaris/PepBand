@@ -30,9 +30,10 @@ urlpatterns = [
     url(r'^admin_page/$', views.admin_page, name='admin_page'),  #URL for the admin page
     url(r'^memes/$', views.memes, name='memes'),  #URL for the memes page
     url(r'^music/$', views.songs, name='songs'),  # URL for the music page
-    #url(r'^music/(?P<id>[0-9]+)/$', views.show_song, name='songHandler'),
-    url(r'^music/(?P<title>[\w\-]+)/$', views.show_song, name='songHandler'), #URL for the music page
-    url(r'^home/(?P<title>[\w\-]+)/$', views.show_song, name='songHandler'),  # URL for the music page
+    url(r'^music/(?P<slug>[\w\-]+)/$', views.show_song, name='songHandler'), #URL for the music page
+    url(r'^music/(?P<slug>[\w\-]+)/jpg/$', views.jpg, name='songHandler'),  # URL for the music page
+    url(r'^music/(?P<slug>[\w\-]+)/jpg/(?P<part>[\w\-]+)/$', views.jpgShow, name='songHandler'),  # URL for the music page
+    url(r'^music/(?P<slug>[\w\-]+)/pdf/$', views.pdf, name='songHandler'),  # URL for the music page
     url(r'^conductor/$', views.conductor, name='songs'),  # URL for the music page
     url(r'^president/$', views.president, name='songs'),  # URL for the music page
 ]

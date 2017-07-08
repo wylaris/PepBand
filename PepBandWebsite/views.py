@@ -19,7 +19,7 @@ songList = []
 songsList = []
 songEntries = []
 memeEntries = []
-
+# def foo():
 for file in listdir('Server\static\media'):
     if (file != ("1Teryn.JPG")) and (file != ("banner.jpg")) and (file != ("favicon.ico")) and (
                 file != ("favicon.png")):
@@ -37,7 +37,7 @@ for entry in songEntries:
         song = Song(title=entry)
         song.save()
 
-publicSongList = Song.objects.filter(status='Pu')
+publicSongList = Song.objects.filter(status='Public')
 totalSongList = Song.objects.all
 
 eBoardList = eBoard.objects.all
@@ -144,7 +144,9 @@ def auth_view(request):
 
     if user is not None:
         auth.login(request, user)
-        if user.groups.filter(name="Conductor").count():
+        if user.groups.filter(name="Admin").count():
+            return HttpResponseRedirect('/home')
+        elif user.groups.filter(name="Conductor").count():
             return HttpResponseRedirect('/conductor')
         elif user.groups.filter(name="President").count():
             return HttpResponseRedirect('/president')
@@ -174,8 +176,10 @@ def songs(request):
     return render(request, 'dashboard/music.html', {"list": totalSongList})
 
 
-def show_song(request, title):
-    return render(request, "dashboard/success.html")
+def show_song(request, slug):
+    name = Song.objects.get(slug=slug)
+    name = name.title
+    return render(request, "dashboard/success.html", {"song":name})
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -186,3 +190,24 @@ def conductor(request):
 @user_passes_test(checkPresident, login_url='/login/')
 def president(request):
     return render(request, "dashboard/president.html")
+
+
+def jpg(request, slug):
+    name = Song.objects.get(slug=slug)
+    parts = []
+    address = "Server\static\music\Beverly Hills\jpg"
+    for folder in listdir(address):
+        parts.append(folder)
+    return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts})
+
+def jpgShow(request, part):
+    return render(request, "dasboard/jpgShow.html", {"parts": part})
+
+
+def pdf(request, slug):
+    name = Song.objects.get(slug=slug)
+    parts = []
+    address = "Server\static\music\Beverly Hills\pdf"
+    for folder in listdir(address):
+        parts.append(folder)
+    return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts})

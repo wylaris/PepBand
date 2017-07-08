@@ -13,7 +13,9 @@ class Song(models.Model):
         ('Private', 'Private'),
     )
     title = models.CharField(max_length=200)
-    status = models.CharField(max_length=2, choices=CHOICES, default='Pr')
+    status = models.CharField(max_length=7, choices=CHOICES, default='Private')
+    slug = models.CharField(max_length=200, blank=False)
+    video = models.CharField(max_length=100, default="", blank=True)
 
     def __str__(self):
         return self.title

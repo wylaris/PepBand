@@ -12,6 +12,7 @@ class addSong(forms.ModelForm):
     """
     title = forms.CharField(required=True)
     public = forms.BooleanField(required=True)
+    video = forms.CharField(required=False)
 
     class Meta:
         model = Song
@@ -21,6 +22,7 @@ class addSong(forms.ModelForm):
         entry = Song()
         entry.title = self.cleaned_data['title']
         entry.public = self.cleaned_data['public']
+        entry.video = self.cleaned_data['video']
 
         if commit:
             entry.save()
@@ -32,14 +34,16 @@ class changeSong(forms.ModelForm):
     Changes the fields for a song
     """
     public = forms.BooleanField(required=True)
+    video = forms.CharField(required=False)
 
     class Meta:
         model = Song
-        fields = 'public'
+        fields = ('public', 'video')
 
     def save(self, commit=True, instance=None):
         entry = Song()
         entry.public = self.cleaned_data['public']
+        entry.video = self.cleaned_data['video']
 
         if commit:
             entry.save()
