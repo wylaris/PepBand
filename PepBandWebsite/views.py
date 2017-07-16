@@ -267,10 +267,12 @@ def jpg(request, slug):
     name = Song.objects.get(slug=slug)
     parts = []
     address = 'Server/static/music/' + name.title + '/jpg'
-    for folder in listdir(address):
-        parts.append(folder)
-    return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts, "slug": slug})
-
+    if os.path.exists(address):
+        for folder in listdir(address):
+            parts.append(folder)
+        return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts, "slug": slug})
+    else:
+        return HttpResponseRedirect('/404')
 
 def jpgShow(request, slug, part):
     song = Song.objects.get(slug=slug)
