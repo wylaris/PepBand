@@ -35,7 +35,7 @@ class eBoard(models.Model):
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     position = models.CharField(max_length=15, choices=CHOICES)
-    cell = models.CharField(max_length=14)
+    cell = models.CharField(max_length=10)
     email = models.CharField(max_length=15)
 
     def __str__(self):
@@ -60,7 +60,7 @@ class Section(models.Model):
     firstName = models.CharField(max_length=50)
     lastName = models.CharField(max_length=50)
     section = models.CharField(max_length=16, choices=CHOICES)
-    cell = models.CharField(max_length=14)
+    cell = models.CharField(max_length=10)
     email = models.CharField(max_length=15)
 
     def __str__(self):

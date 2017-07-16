@@ -1,41 +1,9 @@
-{% extends "dashboard/base.html" %}
+<!DOCTYPE html>
+<html>
+<body>
+{% load static %}
 
-{% block styles %}
-    {% load static %}
-    <!-- Custom styles for this template -->
-    <link href={% static "css/info.css" %} rel="stylesheet">
-{% endblock %}
+<img src={% static address %} alt="{{ part }}" style="width:100%;height:100%;">
 
-{% block options %}
-    <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i
-                class="fa fa-fw fa-folder-open"></i> Information<i
-                class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="mess" class="collapse">
-            <li>
-                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>
-            </li>
-            <li>
-                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>
-            </li>
-            <li>
-                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
-            </li>
-        </ul>
-    </li>
-{% endblock %}
-
-{% block content %}
-    <div class="row">
-        <div class="col-md-12"><h1 class="text-center">{{ part }}</h1></div>
-    </div>
-    <div class="row text-center">
-        <table id="songTable" align="center">
-            {% for part in parts %}
-            <tr>
-                <td><a href={{ part }}><i class="fa fa-fw fa-picture-o"></i>{{ part }}</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-{% endblock %}
+</body>
+</html>

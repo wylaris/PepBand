@@ -3,14 +3,18 @@ View that control what happens in the system
 """
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from django.shortcuts import render, resolve_url, render_to_response
+from django.shortcuts import render, resolve_url, render_to_response, redirect, get_object_or_404
 from django.http import *
 from django.contrib import auth
+from django.template import RequestContext
 from django.template.context_processors import csrf
-from os import listdir, walk
+from os import *
 from django.contrib.auth.decorators import login_required, user_passes_test
-
+import os
 # Load Webpages
+from django.views.generic import UpdateView
+
+from PepBandWebsite.forms import changeEBoard
 from PepBandWebsite.models import Song, eBoard, Section
 
 memeList = []
@@ -19,10 +23,11 @@ songList = []
 songsList = []
 songEntries = []
 memeEntries = []
+
 # def foo():
 for file in listdir('Server\static\media'):
     if (file != ("1Teryn.JPG")) and (file != ("banner.jpg")) and (file != ("favicon.ico")) and (
-                file != ("favicon.png")):
+                file != ("favicon.png") and file !=("sadtiger.jpg")):
         memeEntries.append(file)
 
 for folder in listdir('Server\static\music'):
@@ -37,11 +42,12 @@ for entry in songEntries:
         song = Song(title=entry)
         song.save()
 
-publicSongList = Song.objects.filter(status='Public')
-totalSongList = Song.objects.all
 
-eBoardList = eBoard.objects.all
-sectionList = Section.objects.all()
+# publicSongList = Song.objects.filter(status='Public')
+# totalSongList = Song.objects.all
+
+# eBoardList = eBoard.objects.all
+# sectionList = Section.objects.all()
 
 
 def checkAdmin(user):
@@ -69,6 +75,10 @@ def index(request):
     return render(request, "index/index.html")
 
 
+def notFound(request):
+    return render(request, "dashboard/404.html")
+
+
 @user_passes_test(checkMember, login_url='/login/')
 def eboard(request):
     """
@@ -76,7 +86,7 @@ def eboard(request):
     :param request: 
     :return: 
     """
-
+    eBoardList = eBoard.objects.all
     return render(request, "dashboard/eboard.html", {"list": eBoardList})
 
 
@@ -87,6 +97,7 @@ def section_leaders(request):
     :param request: 
     :return: 
     """
+    sectionList = Section.objects.all()
     return render(request, "dashboard/section_leaders.html", {"list": sectionList})
 
 
@@ -107,6 +118,7 @@ def home(request):
     :param request: 
     :return: 
     """
+    publicSongList = Song.objects.filter(status='Public')
     return render(request, "dashboard/home.html", {"list": publicSongList})
 
 
@@ -173,41 +185,114 @@ def songs(request):
     :param request: 
     :return: 
     """
+    totalSongList = Song.objects.all
     return render(request, 'dashboard/music.html', {"list": totalSongList})
 
 
 def show_song(request, slug):
     name = Song.objects.get(slug=slug)
     name = name.title
-    return render(request, "dashboard/success.html", {"song":name})
+    return render(request, "dashboard/success.html", {"song": name})
 
 
 @user_passes_test(checkConductor, login_url='/login/')
 def conductor(request):
+    totalSongList = Song.objects.all
     return render(request, "dashboard/conductor.html", {"list": totalSongList})
+
+
+def changeStatus(request, slug):
+    piece = Song.objects.get(slug=slug)
+    if piece.status == "Public":
+        piece.status = "Private"
+    elif piece.status == "Private":
+        piece.status = "Public"
+    piece.save()
+    # publicSongList = Song.objects.filter(status='Public')
+    # totalSongList = Song.objects.all
+    return HttpResponseRedirect('/conductor')
 
 
 @user_passes_test(checkPresident, login_url='/login/')
 def president(request):
-    return render(request, "dashboard/president.html")
+    eBoardList = eBoard.objects.all
+    sectionList = Section.objects.all()
+    return render(request, "dashboard/president.html", {"eboard": eBoardList, "section": sectionList})
+
+
+def changeEboard(request, id):
+    instance = get_object_or_404(eBoard, id=id)
+    form = changeEBoard(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        print(form.cleaned_data.get("firstName"))
+        instance.save()
+        return redirect("/president")
+    context = {
+        "firstName": instance.firstName,
+        "lastName": instance.lastName,
+        "cell": instance.cell,
+        "email": instance.email,
+        "instance": instance,
+        "form": form
+    }
+    return render(request, "dashboard/changeInfo.html", context)
+
+
+# class changeEboard(UpdateView, "president"):
+#     model = eBoard
+#     fields = ['fistName', 'lastName', 'position', 'cell', 'email']
+
+
+def changeSection(request, id):
+    instance = get_object_or_404(Section, id=id)
+    form = changeEBoard(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        print(form.cleaned_data.get("firstName"))
+        instance.save()
+        return redirect("/president")
+    context = {
+        "firstName": instance.firstName,
+        "lastName": instance.lastName,
+        "cell": instance.cell,
+        "email": instance.email,
+        "instance": instance,
+        "form": form
+    }
+    return render(request, "dashboard/changeInfo.html", context)
 
 
 def jpg(request, slug):
     name = Song.objects.get(slug=slug)
     parts = []
-    address = "Server\static\music\Beverly Hills\jpg"
+    address = 'Server/static/music/' + name.title + '/jpg'
     for folder in listdir(address):
         parts.append(folder)
-    return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts})
+    return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts, "slug": slug})
 
-def jpgShow(request, part):
-    return render(request, "dasboard/jpgShow.html", {"parts": part})
+
+def jpgShow(request, slug, part):
+    song = Song.objects.get(slug=slug)
+    part = part
+    address = "music/" + song.title + "/jpg/" + part
+    return render(request, "dashboard/jpgShow.html", {"part": part, "song": song, "address": address})
 
 
 def pdf(request, slug):
     name = Song.objects.get(slug=slug)
     parts = []
-    address = "Server\static\music\Beverly Hills\pdf"
-    for folder in listdir(address):
-        parts.append(folder)
-    return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts})
+    address = 'Server/static/music/' + name.title + '/pdf'
+    if os.path.exists(address):
+        for folder in listdir(address):
+            parts.append(folder)
+        return render(request, "dashboard/pdf.html", {"songs": name.title, "parts": parts, "slug": slug})
+    else:
+        return HttpResponseRedirect('/404')
+
+
+def pdfShow(request, slug, part):
+    song = Song.objects.get(slug=slug)
+    part = part
+    address = "music/" + song.title + "/pdf/" + part
+    return render(request, "dashboard/pdfShow.html", {"part": part, "song": song, "address": address})

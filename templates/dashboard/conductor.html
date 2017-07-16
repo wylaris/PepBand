@@ -45,7 +45,10 @@
         {% for entry in list %}
             <div class="row text-center">
                 <div class="col-md-6">{{ entry.title }}</div>
-                <div class="col-md-6">{{ entry.status }}</div>
+                <div class="col-md-6">
+                    <input type="button" class="btn btn-sm btn-primary" value={{ entry.status }} onclick="location.href
+                    = '/conductor/{{ entry.slug }}';">
+                </div>
             </div>
         {% endfor %}
     </div>
