@@ -39,7 +39,6 @@ html,
 body {
     height: 100%;
     background-color: #26282e;
-    background-image: url("https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/15977655_1440914322595425_1934365565524570109_n.jpg?oh=c605b386302c8f53f15d2d4d5762d07c&oe=59B06272");
     background-size: cover;
     background-blend-mode: overlay;
     background-attachment: fixed;
@@ -171,6 +170,10 @@ body {
         text-align: left;
         position: fixed;
         bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+        display: table;
     }
 
     /* Start the vertical centering */

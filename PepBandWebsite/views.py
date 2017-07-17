@@ -191,7 +191,6 @@ def songs(request):
 
 def show_song(request, slug):
     name = Song.objects.get(slug=slug)
-    name = name.title
     return render(request, "dashboard/success.html", {"song": name})
 
 
@@ -225,7 +224,6 @@ def changeEboard(request, id):
     form = changeEBoard(request.POST or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
-        print(form.cleaned_data.get("firstName"))
         instance.save()
         return redirect("/president")
     context = {
@@ -249,7 +247,6 @@ def changeSection(request, id):
     form = changeEBoard(request.POST or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
-        print(form.cleaned_data.get("firstName"))
         instance.save()
         return redirect("/president")
     context = {

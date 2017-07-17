@@ -19,7 +19,7 @@
                 <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>
             </li>
             <li>
-                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Constitution</a>
+                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>
             </li>
         </ul>
     </li>
@@ -41,11 +41,11 @@
     </div>
     <html>
     <body>
-    {% if entries.video %}
-        <iframe width="560" height="315" src={{ ""|add:entry.video }} frameborder="0" allowfullscreen></iframe>
-        <p>yEs</p>
+    <br />
+    <br />
+    {% if song.video %}
+        <iframe width="560" height="315" src={{ ""|add:song.video }} frameborder="0" allowfullscreen></iframe>
     {% endif %}
-    <p>No</p>
     </body>
     </html>
 {% endblock %}

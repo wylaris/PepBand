@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block content %}
-    <body background="https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/15994409_1440914322595425_1934365565524570109_o.jpg?oh=bee611f662c437a7c1d01df5107acf2c&oe=59FD6DB1" style="height: 100%">
 
     <div class="site-wrapper">
         <div class="masthead clearfix">
@@ -19,8 +18,10 @@
                 <h3 class="masthead-brand">RIT PepBand</h3>
                 <nav>
                     <ul class="nav masthead-nav">
-                        <li class="active" id="home"><a href="" class="sign">Home</a></li>
-
+                        <li class="active" id="home"><a href="/" class="sign">Home</a></li>
+                        {% if user.is_authenticated %}
+                            <li id="signin"><a href="login/" class="sign">Sign In</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -35,22 +36,7 @@
                         your
                         musical needs.</p>
                     <p class="lead">
-                        <div class="row">
-                            {% if form.errors %}
-                                <p class="error">Sorry, that's not a valid username or password</p>
-                            {% endif %}
-
-                    <form class="navbar-form navbar-right" method="post" action=/auth/ >{% csrf_token %}
-                        <div class="form-group">
-                            <input type="text" placeholder="Username" name="username" id="username"
-                                   class="form-control" style="margin-bottom: 2%">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" placeholder="Password" name="password" id="password"
-                                   class="form-control" style="margin-bottom: 2%">
-                        </div>
-                        <button type="submit" class="btn btn-success">Sign in</button>
-                    </form>
+                        <a href="login/" class="btn btn-lg btn-default col sign">Sign In</a>
                 </div>
                 </p>
             </div>
@@ -64,7 +50,7 @@
             <div class="row main">
                 <div class="panel-heading">
                     <div class="panel-title text-center">
-                        <h1 class="title">HealthNet Login</h1>
+                        <h1 class="title">RIT PepBand Login</h1>
                     </div>
                 </div>
             </div>
@@ -78,8 +64,7 @@
                         <label for="usernamelog" class="col-sm-2 control-label">Username</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
-                                                                       aria-hidden="true"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                 <input type="text" placeholder="Username" name="usernamelog" id="usernamelog"
                                        class="form-control">
                             </div>
@@ -90,8 +75,7 @@
                         <label for="passwordlog" class="col-sm-2 control-label">Password</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user fa"
-                                                                       aria-hidden="true"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
                                 <input type="password" placeholder="Password" name="passwordlog" id="passwordlog"
                                        class="form-control">
                             </div>
@@ -99,8 +83,8 @@
                     </div>
 
                     <div class="form-group ">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button"
-                                id="login-button">Log In
+                        <button type="submit" class="btn btn-primary btn-lg btn-block login-button" id="login-button">
+                            Log In
                         </button>
                     </div>
 
@@ -110,15 +94,12 @@
 
     </div>
 
-    </div>
 
 
-    <div class="mastfoot">
-        <div class="inner">
-            <p>Updated for the 2017/2018 Academic Year<br>
-					For Use by the RIT Pep Band Only</p>
-        </div>
-    </div>
+<div id="footer">
+					Updated for the 2017/2018 Academic Year<br>
+					For Use by the RIT Pep Band Only
+			</div>
 
 
 {% endblock %}
@@ -130,10 +111,9 @@
         var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
 
         //there are better ways to do this but I am really lazy
-        {% if pound == "SignUp" %}
+        {% if pound == "SignIn" %}
 
             var signIn = $('.sign-in');
-            var signUp = $('.sign-up');
             var home = $('.home');
 
             $('#signin').removeClass('active');
@@ -141,7 +121,7 @@
             $('#home').removeClass('active');
             signIn.hide(0, function () {
                 home.hide(0, function () {
-                    signUp.show();
+                    signIn.show();
                 });
             });
         {% endif %}
