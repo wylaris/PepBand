@@ -1,6 +1,7 @@
 """
 View that control what happens in the system
 """
+from django.apps import AppConfig
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, resolve_url, render_to_response, redirect, get_object_or_404
@@ -24,10 +25,17 @@ songsList = []
 songEntries = []
 memeEntries = []
 
-# def foo():
+global publicSongList
+global totalSongList
+
+publicSongList = []
+totalSongList = []
+
+# class MyAppConfig(AppConfig, songEntries, memeEntries):
+#     def ready(self, songEntries, memeEntries):
 for file in listdir('Server\static\media'):
     if (file != ("1Teryn.JPG")) and (file != ("banner.jpg")) and (file != ("favicon.ico")) and (
-                file != ("favicon.png") and file !=("sadtiger.jpg")):
+                    file != ("favicon.png") and file != ("sadtiger.jpg")):
         memeEntries.append(file)
 
 for folder in listdir('Server\static\music'):
@@ -42,9 +50,17 @@ for entry in songEntries:
         song = Song(title=entry)
         song.save()
 
+publicSongList = Song.objects.filter(status='Public')
+totalSongList = Song.objects.all
 
-# publicSongList = Song.objects.filter(status='Public')
-# totalSongList = Song.objects.all
+
+# return publicSongList, totalSongList
+
+# def loadSongLists(public, total):
+#     publicSongList = public
+#     totalSongList = total
+#     return publicSongList, totalSongList
+
 
 # eBoardList = eBoard.objects.all
 # sectionList = Section.objects.all()
@@ -118,7 +134,7 @@ def home(request):
     :param request: 
     :return: 
     """
-    publicSongList = Song.objects.filter(status='Public')
+    # publicSongList = Song.objects.filter(status='Public')
     return render(request, "dashboard/home.html", {"list": publicSongList})
 
 
@@ -196,7 +212,7 @@ def show_song(request, slug):
 
 @user_passes_test(checkConductor, login_url='/login/')
 def conductor(request):
-    totalSongList = Song.objects.all
+    # totalSongList = Song.objects.all
     return render(request, "dashboard/conductor.html", {"list": totalSongList})
 
 
@@ -207,8 +223,10 @@ def changeStatus(request, slug):
     elif piece.status == "Private":
         piece.status = "Public"
     piece.save()
-    # publicSongList = Song.objects.filter(status='Public')
-    # totalSongList = Song.objects.all
+    global publicSongList
+    global totalSongList
+    publicSongList = Song.objects.filter(status='Public')
+    totalSongList = Song.objects.all
     return HttpResponseRedirect('/conductor')
 
 
@@ -235,11 +253,6 @@ def changeEboard(request, id):
         "form": form
     }
     return render(request, "dashboard/changeInfo.html", context)
-
-
-# class changeEboard(UpdateView, "president"):
-#     model = eBoard
-#     fields = ['fistName', 'lastName', 'position', 'cell', 'email']
 
 
 def changeSection(request, id):
@@ -270,6 +283,7 @@ def jpg(request, slug):
         return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts, "slug": slug})
     else:
         return HttpResponseRedirect('/404')
+
 
 def jpgShow(request, slug, part):
     song = Song.objects.get(slug=slug)

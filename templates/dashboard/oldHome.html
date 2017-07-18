@@ -55,31 +55,31 @@
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                {% block options %}
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i
-                                class="fa fa-fw fa-folder-open"></i> Information<i
-                                class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="mess" class="collapse">
-                            <li>
-                                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>
-                            </li>
-                            <li>
-                                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>
-                            </li>
-                            <li>
-                                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>
-                            </li>
-                        </ul>
-                        <div class="row text-center">
-                            {% for entries in list %}
-                                <li>
-                                    <a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a>
-
-                                </li>
-                            {% endfor %}
-                    </li>
-                {% endblock %}
+{#                {% block options %}#}
+{#                    <li>#}
+{#                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
+{#                                class="fa fa-fw fa-folder-open"></i> Information<i#}
+{#                                class="fa fa-fw fa-caret-down"></i></a>#}
+{#                        <ul id="mess" class="collapse">#}
+{#                            <li>#}
+{#                                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>#}
+{#                            </li>#}
+{#                        </ul>#}
+{#                        <div class="row text-center">#}
+{#                            {% for entries in list %}#}
+{#                                <li>#}
+{#                                    <a href={{ entries.title }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a>#}
+{##}
+{#                                </li>#}
+{#                            {% endfor %}#}
+{#                    </li>#}
+{#                {% endblock %}#}
 
         </div>
         <!-- /.navbar-collapse -->
