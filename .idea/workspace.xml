@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/PepBandWebsite/views.py" line="35" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/PepBandWebsite/views.py" line="36" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/PepBandWebsite/forms.py" line="49" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c00d55cc-d813-45c7-bd74-a54f2e16495c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/dashboard/discharged.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PepBandWebsite/forms.py" afterPath="$PROJECT_DIR$/PepBandWebsite/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PepBandWebsite/models.py" afterPath="$PROJECT_DIR$/PepBandWebsite/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PepBandWebsite/views.py" afterPath="$PROJECT_DIR$/PepBandWebsite/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/404.html" afterPath="$PROJECT_DIR$/templates/dashboard/404.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/admin_page.html" afterPath="$PROJECT_DIR$/templates/dashboard/admin_page.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/static/bootstrap/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/Server/static/bootstrap/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/urls.py" afterPath="$PROJECT_DIR$/Server/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/base.html" afterPath="$PROJECT_DIR$/templates/dashboard/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/changeInfo.html" afterPath="$PROJECT_DIR$/templates/dashboard/changeInfo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/conductor.html" afterPath="$PROJECT_DIR$/templates/dashboard/conductor.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/constitution.html" afterPath="$PROJECT_DIR$/templates/dashboard/constitution.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/eboard.html" afterPath="$PROJECT_DIR$/templates/dashboard/eboard.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/home.html" afterPath="$PROJECT_DIR$/templates/dashboard/home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/jpg.html" afterPath="$PROJECT_DIR$/templates/dashboard/jpg.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/memes.html" afterPath="$PROJECT_DIR$/templates/dashboard/memes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/music.html" afterPath="$PROJECT_DIR$/templates/dashboard/music.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/new_song.html" afterPath="$PROJECT_DIR$/templates/dashboard/new_song.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/oldHome.html" afterPath="$PROJECT_DIR$/templates/dashboard/oldHome.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/pdf.html" afterPath="$PROJECT_DIR$/templates/dashboard/pdf.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/president.html" afterPath="$PROJECT_DIR$/templates/dashboard/president.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/section_leaders.html" afterPath="$PROJECT_DIR$/templates/dashboard/section_leaders.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/success.html" afterPath="$PROJECT_DIR$/templates/dashboard/success.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index/index.html" afterPath="$PROJECT_DIR$/templates/index/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +29,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PepBandWebsite$manage.coverage" NAME="manage Coverage Results" MODIFIED="1500344696358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PepBandWebsite$manage.coverage" NAME="manage Coverage Results" MODIFIED="1500600534463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -43,11 +37,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PepBandWebsite/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+            <state relative-caret-position="-8519">
+              <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
               <folding>
                 <element signature="e#53#86#0" expanded="true" />
               </folding>
@@ -58,29 +52,22 @@
       <file leaf-file-name="conductor.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/dashboard/conductor.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="25" selection-end-column="16" />
+            <state relative-caret-position="424">
+              <caret line="43" column="18" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/dashboard/base.html">
+      <file leaf-file-name="success.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/dashboard/success.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="oldHome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/dashboard/oldHome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="81" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="589">
+              <caret line="37" column="91" lean-forward="false" selection-start-line="37" selection-start-column="91" selection-end-line="37" selection-end-column="91" />
+              <folding>
+                <element signature="e#1238#1261#0#HTML" expanded="true" />
+                <element signature="e#1384#1407#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,19 +75,15 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/dashboard/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="33" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="president.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/dashboard/president.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="94" column="20" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="94" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="-99">
+              <caret line="41" column="23" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+              <folding>
+                <element signature="e#1368#1406#0#HTML" expanded="true" />
+                <element signature="e#1508#1546#0#HTML" expanded="true" />
+                <marker date="1500601795172" expanded="false" signature="2923:2939" ph="..." />
+                <marker date="1500601795172" expanded="false" signature="4069:4085" ph="..." />
+                <marker date="1500601795172" expanded="false" signature="4501:4517" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,7 +101,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>d</find>
       <find>docue</find>
       <find>docu</find>
       <find>docum</find>
@@ -148,6 +130,7 @@
       <find>backg</find>
       <find>background</find>
       <find>back</find>
+      <find>show_s</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -187,25 +170,17 @@
         <option value="$PROJECT_DIR$/Server/static/admin/css/sb-admin.css" />
         <option value="$PROJECT_DIR$/Server/static/admin/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/templates/dashboard/jpg.show.html" />
-        <option value="$PROJECT_DIR$/PepBandWebsite/forms.py" />
         <option value="$PROJECT_DIR$/templates/dashboard/post_form.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/changeEboard.html" />
-        <option value="$PROJECT_DIR$/PepBandWebsite/models.py" />
         <option value="$PROJECT_DIR$/templates/dashboard/jpgShow.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/pdfShow.html" />
-        <option value="$PROJECT_DIR$/Server/urls.py" />
         <option value="$PROJECT_DIR$/templates/index/healthNetIndex.html" />
         <option value="$PROJECT_DIR$/templates/index/save.html" />
-        <option value="$PROJECT_DIR$/Server/static/bootstrap/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/Server/static/css/cover.css" />
         <option value="$PROJECT_DIR$/Server/static/css/register.css" />
         <option value="$PROJECT_DIR$/templates/index/asd.css" />
-        <option value="$PROJECT_DIR$/templates/index/index.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/base.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/404.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/admin_page.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/changeInfo.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/conductor.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/constitution.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/eboard.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/jpg.html" />
@@ -214,11 +189,19 @@
         <option value="$PROJECT_DIR$/templates/dashboard/new_song.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/oldHome.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/pdf.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/president.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/section_leaders.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/success.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/home.html" />
+        <option value="$PROJECT_DIR$/PepBandWebsite/forms.py" />
+        <option value="$PROJECT_DIR$/Server/urls.py" />
+        <option value="$PROJECT_DIR$/templates/dashboard/changeInfo.html" />
+        <option value="$PROJECT_DIR$/templates/dashboard/base.html" />
+        <option value="$PROJECT_DIR$/PepBandWebsite/models.py" />
         <option value="$PROJECT_DIR$/PepBandWebsite/views.py" />
+        <option value="$PROJECT_DIR$/templates/dashboard/president.html" />
+        <option value="$PROJECT_DIR$/Server/static/bootstrap/css/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/templates/dashboard/home.html" />
+        <option value="$PROJECT_DIR$/templates/index/index.html" />
+        <option value="$PROJECT_DIR$/templates/dashboard/conductor.html" />
+        <option value="$PROJECT_DIR$/templates/dashboard/success.html" />
       </list>
     </option>
   </component>
@@ -251,6 +234,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -447,7 +431,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -725,15 +708,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3226" height="1746" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09736504" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09865039" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3243788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3243788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903662" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -759,13 +741,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Server/static/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="97" column="44" lean-forward="true" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PepBandWebsite/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -859,14 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PepBandWebsite/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="62" column="41" lean-forward="false" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/templatetags/myfilters.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -875,36 +842,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index/healthNetIndex.html" />
-    <entry file="file://$PROJECT_DIR$/PepBandWebsite/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="53" column="18" lean-forward="false" selection-start-line="53" selection-start-column="6" selection-end-line="53" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="28" column="84" lean-forward="false" selection-start-line="28" selection-start-column="84" selection-end-line="28" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index/save.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3267">
-          <caret line="99" column="20" lean-forward="false" selection-start-line="99" selection-start-column="20" selection-end-line="100" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Server/static/bootstrap/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="1356" column="19" lean-forward="false" selection-start-line="1356" selection-start-column="19" selection-end-line="1356" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/static/css/home.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -933,31 +870,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="45" column="80" lean-forward="false" selection-start-line="45" selection-start-column="80" selection-end-line="45" selection-end-column="80" />
-          <folding>
-            <element signature="e#492#512#0#HTML" expanded="false" />
-            <element signature="e#2009#2034#0#HTML" expanded="false" />
-            <element signature="e#2276#2301#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index/baseindex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Server/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4191">
           <caret line="127" column="15" lean-forward="false" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,22 +893,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/changeInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/discharged.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/discharged.html" />
     <entry file="file://$PROJECT_DIR$/templates/dashboard/constitution.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
@@ -1021,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="5" column="54" lean-forward="true" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,7 +937,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="5" column="100" lean-forward="false" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="100" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,25 +956,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/success.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard/memes.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/music.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="25" selection-end-column="16" />
           <folding />
         </state>
@@ -1097,52 +980,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/conductor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="25" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard/oldHome.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="1881">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="81" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/forms/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="231" column="0" lean-forward="false" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PepBandWebsite/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/changeInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Server/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="40" column="67" lean-forward="false" selection-start-line="40" selection-start-column="67" selection-end-line="40" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index/save.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="899">
+          <caret line="99" column="20" lean-forward="false" selection-start-line="99" selection-start-column="20" selection-end-line="100" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="117" column="38" lean-forward="false" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index/baseindex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-401">
+          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PepBandWebsite/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/music.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-566">
+          <caret line="4" column="44" lean-forward="true" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard/president.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="94" column="20" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="94" selection-end-column="20" />
+        <state relative-caret-position="-665">
+          <caret line="54" column="46" lean-forward="false" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/home.html">
+    <entry file="file://$PROJECT_DIR$/Server/static/bootstrap/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="33" selection-end-column="16" />
+        <state relative-caret-position="-6737">
+          <caret line="1356" column="19" lean-forward="false" selection-start-line="1356" selection-start-column="19" selection-end-line="1356" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PepBandWebsite/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="257" column="0" lean-forward="false" selection-start-line="257" selection-start-column="0" selection-end-line="257" selection-end-column="0" />
+        <state relative-caret-position="-8519">
+          <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
           <folding>
             <element signature="e#53#86#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/conductor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="43" column="18" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-99">
+          <caret line="41" column="23" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+          <folding>
+            <element signature="e#1368#1406#0#HTML" expanded="true" />
+            <element signature="e#1508#1546#0#HTML" expanded="true" />
+            <marker date="1500601795172" expanded="false" signature="2923:2939" ph="..." />
+            <marker date="1500601795172" expanded="false" signature="4069:4085" ph="..." />
+            <marker date="1500601795172" expanded="false" signature="4501:4517" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/success.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="37" column="91" lean-forward="false" selection-start-line="37" selection-start-column="91" selection-end-line="37" selection-end-column="91" />
+          <folding>
+            <element signature="e#1238#1261#0#HTML" expanded="true" />
+            <element signature="e#1384#1407#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

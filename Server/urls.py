@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^music/(?P<slug>[\w\-]+)/pdf/(?P<part>.*)/$', views.pdfShow, name='songHandler'),  # URL for the music page
     url(r'^conductor/$', views.conductor, name='songs'),  # URL for the music page
     url(r'^conductor/(?P<slug>[\w\-]+)/$', views.changeStatus, name='changeStatus'),  # URL for the music page
+    url(r'^conductor/(?P<slug>[\w\-]+)/change/$', views.changeNotes, name='changeStatus'),  # URL for the music page
     url(r'^president/$', views.president, name='songs'),  # URL for the music page
     url(r'^president/eboard/(?P<id>[\w\-]+)/$', views.changeEboard, name='songs'),  # URL for the music page
     url(r'^president/section/(?P<id>[\w\-]+)/$', views.changeSection, name='songs'),  # URL for the music page

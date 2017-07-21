@@ -15,7 +15,7 @@ import os
 # Load Webpages
 from django.views.generic import UpdateView
 
-from PepBandWebsite.forms import changeEBoard
+from PepBandWebsite.forms import changeEBoard, changeSong
 from PepBandWebsite.models import Song, eBoard, Section
 
 memeList = []
@@ -33,6 +33,7 @@ totalSongList = []
 
 # class MyAppConfig(AppConfig, songEntries, memeEntries):
 #     def ready(self, songEntries, memeEntries):
+# def foo():
 for file in listdir('Server\static\media'):
     if (file != ("1Teryn.JPG")) and (file != ("banner.jpg")) and (file != ("favicon.ico")) and (
                     file != ("favicon.png") and file != ("sadtiger.jpg")):
@@ -228,6 +229,20 @@ def changeStatus(request, slug):
     publicSongList = Song.objects.filter(status='Public')
     totalSongList = Song.objects.all
     return HttpResponseRedirect('/conductor')
+
+def changeNotes(request, slug):
+    instance = get_object_or_404(Song, slug=slug)
+    form = changeSong(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect("/conductor")
+    context = {
+        "notes": instance.notes,
+        "instance": instance,
+        "form": form
+    }
+    return render(request, "dashboard/changeInfo.html", context)
 
 
 @user_passes_test(checkPresident, login_url='/login/')

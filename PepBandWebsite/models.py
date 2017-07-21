@@ -16,6 +16,7 @@ class Song(models.Model):
     status = models.CharField(max_length=7, choices=CHOICES, default='Private')
     slug = models.CharField(max_length=200, blank=False)
     video = models.CharField(max_length=100, default="", blank=True)
+    notes = models.CharField(max_length=500, default="None")
 
     def __str__(self):
         return self.title
@@ -37,6 +38,7 @@ class eBoard(models.Model):
     position = models.CharField(max_length=15, choices=CHOICES)
     cell = models.CharField(max_length=10)
     email = models.CharField(max_length=15)
+    slug = models.CharField(max_length=200, blank=False)
 
     def __str__(self):
         return self.firstName +" " + self.lastName
