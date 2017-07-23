@@ -48,11 +48,13 @@ for entry in songEntries:
     if Song.objects.filter(title=entry):
         pass
     else:
-        song = Song(title=entry)
+        slug = entry.replace(" ", "-")
+        song = Song(title=entry, slug=slug)
         song.save()
 
-publicSongList = Song.objects.filter(status='Public')
-totalSongList = Song.objects.all
+publicSongList = Song.objects.filter(status='Public').order_by('title')
+totalSongList = Song.objects.all().order_by('title')
+print(totalSongList)
 
 
 # return publicSongList, totalSongList
@@ -202,7 +204,6 @@ def songs(request):
     :param request: 
     :return: 
     """
-    totalSongList = Song.objects.all
     return render(request, 'dashboard/music.html', {"list": totalSongList})
 
 
@@ -226,8 +227,8 @@ def changeStatus(request, slug):
     piece.save()
     global publicSongList
     global totalSongList
-    publicSongList = Song.objects.filter(status='Public')
-    totalSongList = Song.objects.all
+    publicSongList = Song.objects.filter(status='Public').order_by('title')
+    totalSongList = Song.objects.all().order_by('title')
     return HttpResponseRedirect('/conductor')
 
 def changeNotes(request, slug):
