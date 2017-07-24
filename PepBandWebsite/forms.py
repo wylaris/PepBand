@@ -1,5 +1,5 @@
 """
-May or may not be used
+Forms that use the models to add and modify entries in the database.
 """
 from django import forms
 from django.forms import ModelForm
@@ -43,6 +43,9 @@ class changeSong(forms.ModelForm):
 
 
 class changeEBoard(ModelForm):
+    """
+    Change the fields for a selected eboard member in the database
+    """
     firstName = forms.CharField(required=True)
     lastName = forms.CharField(required=True)
     cell = forms.RegexField(regex=r'^\+?1?\d{9,15}$', required=True)
@@ -55,7 +58,7 @@ class changeEBoard(ModelForm):
 
 class changeSection(forms.ModelForm):
     """
-    Changes the fields for a section leader
+    Changes the fields for a section leader in the database
     """
     firstName = forms.CharField(required=True)
     lastName = forms.CharField(required=True)
