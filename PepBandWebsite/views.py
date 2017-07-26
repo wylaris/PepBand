@@ -1,6 +1,8 @@
 """
 Views that control what happens in the system
 """
+from wsgiref.util import FileWrapper
+
 from django.apps import AppConfig
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -13,6 +15,7 @@ from os import *
 from django.contrib.auth.decorators import login_required, user_passes_test
 import os
 # Load Webpages
+from django.utils.encoding import smart_str
 from django.views.generic import UpdateView
 
 from PepBandWebsite.forms import changeEBoard, changeSong
@@ -34,13 +37,13 @@ totalSongList = []
 
 # def foo():
 # Generates the list of memes from the pictures in the static folder.  It skips unwanted pictures.
-for file in listdir('Server\static\media'):
+for file in os.listdir('Server/static/media'):
     if (file != ("1Teryn.JPG")) and (file != ("banner.jpg")) and (file != ("favicon.ico")) and (
                     file != ("favicon.png") and file != ("sadtiger.jpg")):
         memeEntries.append(file)
 
 # Adds the name of the files to the list of songs
-for folder in listdir('Server\static\music'):
+for folder in os.listdir('Server/static/music'):
     songEntries.append(folder)
 
 # Sorts the list of songs
@@ -51,9 +54,10 @@ for entry in songEntries:
     if Song.objects.filter(title=entry):
         pass
     else:
-        slug = entry.replace(" ", "-")
-        song = Song(title=entry, slug=slug)
-        song.save()
+        if entry is not None:
+            slug = entry.replace(" ", "-")
+            song = Song(title=entry, slug=slug)
+            song.save()
 
 # Generates the song lists
 publicSongList = Song.objects.filter(status='Public').order_by('title')
@@ -214,6 +218,7 @@ def songs(request):
     return render(request, 'dashboard/music.html', {"list": totalSongList})
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def show_song(request, slug):
     """
     Page that links the song files, youtube video, and notes if existent
@@ -221,8 +226,15 @@ def show_song(request, slug):
     :param slug: Slug for the song (Title with "-" instead of " ")
     :return: Renders the song page
     """
+    audio = []
     name = Song.objects.get(slug=slug)
-    return render(request, "dashboard/success.html", {"song": name})
+    # address = "Server/static/music"
+    address = 'Server/static/music/' + name.title
+    for file in os.listdir(address):
+        if file.endswith(".wav") or file.endswith(".mp3"):
+            audio.append(file)
+            print("success")
+    return render(request, "dashboard/success.html", {"song": name, "audio": audio})
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -235,6 +247,7 @@ def conductor(request):
     return render(request, "dashboard/conductor.html", {"list": totalSongList})
 
 
+@user_passes_test(checkConductor, login_url='/login/')
 def changeStatus(request, slug):
     """
     Toggles the status of the song between Public and Private
@@ -255,6 +268,7 @@ def changeStatus(request, slug):
     return HttpResponseRedirect('/conductor')
 
 
+@user_passes_test(checkConductor, login_url='/login/')
 def changeNotes(request, slug):
     """
     Allows the conductor to change the notes of the selected song
@@ -289,6 +303,7 @@ def president(request):
     return render(request, "dashboard/president.html", {"eboard": eBoardList, "section": sectionList})
 
 
+@user_passes_test(checkPresident, login_url='/login/')
 def changeEboard(request, id):
     """
     Allows the president to change the fields of the eboard members
@@ -313,6 +328,7 @@ def changeEboard(request, id):
     return render(request, "dashboard/changeInfo.html", context)
 
 
+@user_passes_test(checkPresident, login_url='/login/')
 def changeSection(request, id):
     """
     Allows the president to change the fields of the section leaders
@@ -337,6 +353,7 @@ def changeSection(request, id):
     return render(request, "dashboard/changeInfo.html", context)
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def jpg(request, slug):
     """
     Loads a list of JPG files for the selected song
@@ -355,6 +372,7 @@ def jpg(request, slug):
         return HttpResponseRedirect('/404')
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def jpgShow(request, slug, part):
     """
     Emebeds a fullpage JPG on a new tab 
@@ -369,6 +387,7 @@ def jpgShow(request, slug, part):
     return render(request, "dashboard/jpgShow.html", {"part": part, "song": song, "address": address})
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def pdf(request, slug):
     """
     Loads a list of PDF files for the selected song
@@ -387,6 +406,7 @@ def pdf(request, slug):
         return HttpResponseRedirect('/404')
 
 
+@user_passes_test(checkMember, login_url='/login/')
 def pdfShow(request, slug, part):
     """
     Emebeds a fullpage PDF on a new tab
