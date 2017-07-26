@@ -1,118 +1,166 @@
 {% extends "dashboard/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+{% block styles %}
     {% load static %}
-    <link rel="shortcut icon" type="image/png"
-          href="{% static "media/favicon.ico" %}"/>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>RIT Pepband Resource Center</title>
-
-
-    <!-- Bootstrap Core CSS -->
-    <link href="{% static "admin/css/bootstrap.min.css" %}" rel="stylesheet">
-
-
-    <!-- Custom CSS -->
-    <link href="{% static "admin/css/sb-admin.css" %}" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="{% static "admin/css/plugins/morris.css" %}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
-          type="text/css">
-
-    {% block styles %}
-    {% endblock %}
-
-</head>
-
-<body>
-
-<div id="wrapper">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">RIT Pep Band</a>
-        </div>
-
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
-{#                {% block options %}#}
-{##}
-{#                    <li>#}
-{#                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
-{#                                class="fa fa-fw fa-folder-open"></i> Information<i#}
-{#                                class="fa fa-fw fa-caret-down"></i></a>#}
-{#                        <ul id="mess" class="collapse">#}
-{#                            <li>#}
-{#                                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>#}
-{#                            </li>#}
-{#                            <li>#}
-{#                                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>#}
-{#                            </li>#}
-{#                            <li>#}
-{#                                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>#}
-{#                            </li>#}
-{#                        </ul>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <a href="/new_song"><i class="fa fa-fw fa-file"></i> New Song</a>#}
-{#                    </li>#}
-{#                    </ul>#}
-{#                    </div>#}
-{##}
-{#                {% endblock %}#}
-
-</div>
-<!-- /.navbar-collapse -->
-</nav>
-
-<div id="page-wrapper">
-
-    <div class="container-fluid">
-        {% block content %}
-            <p>Admin page</p>
-        {% endblock %}
-    </div>
-    <!-- /.container-fluid -->
-
-</div>
-
-
-</div>
-
-<!-- jQuery -->
-<script src="{% static  "admin/js/jquery.js" %}"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="{% static "admin/js/bootstrap.min.js" %}"></script>
-<!-- Morris Cadmin/harts JavaScript -->
-<!-- <script src="{% static "admin/js/plugins/morris/raphael.min.js" %}"></script>
-    <script src="{% static "admin/js/plugins/morris/morris.min.js" %}"></script>
-    <script src="{% static "admin/js/plugins/morris/morris-data.js" %}"></script>-->
-
-
-{% block scripts %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
 {% endblock %}
 
-</body>
+{#{% block options %}#}
+{#    <li>#}
+{#        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
+{#                class="fa fa-fw fa-folder-open"></i> Information<i#}
+{#                class="fa fa-fw fa-caret-down"></i></a>#}
+{#        <ul id="mess" class="collapse">#}
+{#            <li>#}
+{#                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>#}
+{#            </li>#}
+{#        </ul>#}
+{#    </li>#}
+{#{% endblock %}#}
 
-</html>
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">Music</h1></div>
+            <form method="POST" action="">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h3><p class="text-success">Title</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Status</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Notes</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Delete</p></h3>
+            </div>
+        </div>
+        <hr>
+        {% for entry in list %}
+            <div class="row text-center">
+                <div class="col-sm-3">{{ entry.title }}</div>
+                <div class="col-sm-3">
+                    <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
+                           value={{ entry.status }} onclick="location.href
+                    = '/conductor/{{ entry.slug }}';">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" style="margin: -10px" class="btn btn-sm btn-primary" value="Change"
+                           onclick="location.href
+                                   = '/conductor/{{ entry.slug }}/change';">
+                </div>
+                <div class="col-sm-3">
+                    <input type="button" style="margin: -10px" class="btn btn-sm btn-danger" value="Delete"
+                           onclick="location.href
+                                   = '/admin_page/{{ entry.slug }}/delete';">
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">eBoard</h1></div>
+            <form method="POST" action="">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h3><p class="text-success">Position</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Name</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Cell</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Email</p></h3>
+            </div>
+        </div>
+        <hr>
+        {% for entry in eboard %}
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <input type="button" style="margin: -10px;" class="btn btn-sm btn-primary"
+                           value={{ entry.slug }} onclick="location.href
+                    = '/president/eboard/{{ entry.id }}';">
+                </div>
+                <div class="col-md-3">{{ entry }}</div>
+                <div class="col-md-3"><a href="tel:{{ entry.cell }}">{{ entry.cell }}</a></div>
+                <div class="col-md-3"><a href="mailto:{{ entry.email }}" target="_top">{{ entry.email }}</a></div>
+            </div>
+            <hr>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">Section Leaders</h1></div>
+            <form method="POST" action="">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h3><p class="text-success">Section</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Name</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Cell</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Email</p></h3>
+            </div>
+        </div>
+        <hr>
+        {% for leader in section %}
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
+                           value={{ leader.section }} onclick="location.href
+                    = '/president/section/{{ leader.id }}';">
+                </div>
+                <div class="col-md-3">{{ leader }}</div>
+                <div class="col-md-3"><a href="tel:{{ leader.cell }}">{{ leader.cell }}</a></div>
+                <div class="col-md-3"><a href="mailto:{{ leader.email }}" target="_top">{{ leader.email }}</a></div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">Accounts</h1></div>
+        <form method="POST" action="">
+            {% csrf_token %}
+        </form>
+    </div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <h3><p class="text-success">Username</p></h3>
+        </div>
+    </div>
+    <hr>
+    {% for user in users %}
+        <div class="row text-center">
+            <div class="col-md-12">
+                <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
+                       value={{ user }} onclick="location.href
+                = '/admin_page/{{ user }}/change_password';">
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+    </div>
+{% endblock %}

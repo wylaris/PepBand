@@ -4,11 +4,12 @@ Views that control what happens in the system
 from wsgiref.util import FileWrapper
 
 from django.apps import AppConfig
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, resolve_url, render_to_response, redirect, get_object_or_404
 from django.http import *
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.template import RequestContext
 from django.template.context_processors import csrf
 from os import *
@@ -117,6 +118,49 @@ def notFound(request):
     :return: Renders the 404 page
     """
     return render(request, "dashboard/404.html")
+
+
+@user_passes_test(checkAdmin, login_url='/login/')
+def admin_page(request):
+    users = User.objects.values_list('username', flat=True)
+    print(users)
+    eBoardList = eBoard.objects.all
+    sectionList = Section.objects.all()
+    return render(request, "dashboard/admin_page.html",
+                  {"eboard": eBoardList, "section": sectionList, "list": totalSongList, "users":users})
+
+
+@user_passes_test(checkAdmin, login_url='/login/')
+def changePassword(request, username):
+    realUser = request.user
+    request.user = User.objects.get(username=username)
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            request.user = realUser
+            return redirect('/')
+        else:
+            request.user = realUser
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+        request.user = realUser
+    return render(request, 'dashboard/change_password.html', {
+        'form': form
+    })
+
+
+@user_passes_test(checkAdmin, login_url='/login/')
+def deleteSong(request, slug):
+    Song.objects.filter(slug=slug).delete()
+    global publicSongList
+    global totalSongList
+    publicSongList = Song.objects.filter(status='Public').order_by('title')
+    totalSongList = Song.objects.all().order_by('title')
+    return HttpResponseRedirect('/admin_page')
 
 
 @user_passes_test(checkMember, login_url='/login/')
