@@ -1,0 +1,121 @@
+{% extends "dashboard/m_base.html" %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{#{% block options %}#}
+{#    <li>#}
+{#        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
+{#                class="fa fa-fw fa-folder-open"></i> Information<i#}
+{#                class="fa fa-fw fa-caret-down"></i></a>#}
+{#        <ul id="mess" class="collapse">#}
+{#            <li>#}
+{#                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>#}
+{#            </li>#}
+{#            <li>#}
+{#                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>#}
+{#            </li>#}
+{#        </ul>#}
+{##}
+{#        <div class="row text-center">#}
+{#            {% for entries in list %}#}
+{#                <li>#}
+{#                    <a href={{ "/music/"|add:entries.slug }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a>#}
+{##}
+{#                </li>#}
+{#            {% endfor %}#}
+{#    </li>#}
+{#{% endblock %}#}
+
+{% block content %}
+    <div class="row text-center">
+        <div class="col-lg-6">
+            <h3><p class="text-success" style="color: black; font-size: 36px;">Music</p></h3>
+        </div>
+        <div class="col-lg-6">
+            <h3><p class="text-success" style="color: black; font-size: 36px;">Calendar</p></h3>
+        </div>
+    </div>
+    <hr>
+    <div class="row text-center">
+        <div class="col-lg-6">
+            <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
+
+            <table id="songTable" align="center">
+                {% for entries in list %}
+                    <tr>
+                        <td><a href={{ "/music/"|add:entries.slug }}><i
+                                class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-lg-6">
+
+            <div class="show-for-medium-up hide-for-medium-down">
+                <iframe src="https://www.google.com/calendar/embed?showTitle=0&showNav=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ritpepband@gmail.com&color=%23B1440E&ctz=America/New_York"
+                        style=" border-width:0 " width="320" height="480" frameborder="0" scrolling="no"></iframe>
+            </div>
+{#            <div class="show-for-small hide-for-medium-up">#}
+{#                <iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&height=500&wkst=1&bgcolor=%23FFFFFF&src=ritpepband@gmail.com&color=%23B1440E&ctz=America/New_York"#}
+{#                        style=" border-width:0 " width="300" height="500" frameborder="0" scrolling="no"></iframe>#}
+{#            </div>#}
+        </div>
+    </div>
+
+{#    <div class="row">#}
+{#        <div class="col-md-12"><h1 class="text-center">Music</h1></div>#}
+{#    </div>#}
+{#    <div class="row text-center">#}
+{#        <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">#}
+{##}
+{#        <table id="songTable" align="center">#}
+{#            {% for entries in list %}#}
+{#                <tr>#}
+{#                    <td><a href={{ "/music/"|add:entries.slug }}><i#}
+{#                            class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#        </table>#}
+{#    </div>#}
+{#    <div class="large-10 columns">#}
+{#        <h1>Calendar</h1>#}
+{#        <div class="show-for-medium-up hide-for-medium-down">#}
+{#            <iframe src="https://www.google.com/calendar/embed?showTitle=0&showNav=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ritpepband@gmail.com&color=%23B1440E&ctz=America/New_York"#}
+{#                    style=" border-width:0 " width="700" height="600" frameborder="0" scrolling="no"></iframe>#}
+{#        </div>#}
+{#        <div class="show-for-small hide-for-medium-up">#}
+{#            <iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&height=500&wkst=1&bgcolor=%23FFFFFF&src=ritpepband@gmail.com&color=%23B1440E&ctz=America/New_York"#}
+{#                    style=" border-width:0 " width="300" height="500" frameborder="0" scrolling="no"></iframe>#}
+{#        </div>#}
+
+
+        <script>
+            function myFunction() {
+                // Declare variables
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("search");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("songTable");
+                tr = table.getElementsByTagName("tr");
+
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+{% endblock %}
