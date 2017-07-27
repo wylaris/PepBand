@@ -50,7 +50,7 @@
                 <span class="icon-bar"></span>
             </button>
             <!--<a class="navbar-brand" href="/home">RIT Pepband</a>-->
-            <a class="navbar-brand" href="/home"> <img src={% static "media/banner.jpg" %} alt="NA"></a>
+            <a class="navbar-brand" href="/home"> <img height="auto" width="auto" src={% static "media/banner.jpg" %} alt="NA"></a>
         </div>
 
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -58,11 +58,11 @@
             <ul class="nav navbar-nav side-nav">
                 {% block options %}
 
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i
-                                class="fa fa-fw fa-folder-open"></i> Information<i
-                                class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="mess" class="collapse">
+{#                    <li>#}
+{#                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
+{#                                class="fa fa-fw fa-folder-open"></i> Information<i#}
+{#                                class="fa fa-fw fa-caret-down"></i></a>#}
+{#                        <ul id="mess" class="collapse">#}
                             <li>
                                 <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>
                             </li>
@@ -71,6 +71,9 @@
                             </li>
                             <li>
                                 <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>
+                            </li>
+                            <li>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9kwk24fxRvzLo_IPwqgV_zjSohBUpkCMt6kunLB4yVsMJyQ/viewform?usp=sf_link" target="_blank"> <i class="fa fa-fw fa-lightbulb-o"></i> BUG REPORT <br>   (BETA ONLY)</a>
                             </li>
                         </ul>
                     </li>
@@ -115,7 +118,7 @@
 
 
     </body>
-    <div id="footer" style="margin-left:15%; text-align: center; color: white">
+    <div id="footer" style="margin-left:-225px; text-align: center; color: white">
     Updated for the 2017/2018 Academic Year<br>
     For Use by the RIT Pep Band Only
 </div>
