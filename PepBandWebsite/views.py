@@ -274,11 +274,14 @@ def show_song(request, slug):
     name = Song.objects.get(slug=slug)
     # address = "Server/static/music"
     address = 'Server/static/music/' + name.title
-    for file in os.listdir(address):
-        if file.endswith(".wav") or file.endswith(".mp3"):
-            audio.append(file)
-            print("success")
-    return render(request, "dashboard/success.html", {"song": name, "audio": audio})
+    if os.path.exists(address):
+        for file in os.listdir(address):
+            if file.endswith(".wav") or file.endswith(".mp3"):
+                audio.append(file)
+                print("success")
+        return render(request, "dashboard/success.html", {"song": name, "audio": audio})
+    else:
+        return HttpResponseRedirect('/404')
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -309,7 +312,10 @@ def changeStatus(request, slug):
     global totalSongList
     publicSongList = Song.objects.filter(status='Public').order_by('title')
     totalSongList = Song.objects.all().order_by('title')
-    return HttpResponseRedirect('/conductor')
+    if request.user.is_superuser:
+        return HttpResponseRedirect('/admin_page')
+    else:
+        return HttpResponseRedirect('/conductor')
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -325,7 +331,10 @@ def changeNotes(request, slug):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        return redirect("/conductor")
+        if request.user.is_superuser:
+            return redirect('/admin_page')
+        else:
+            return redirect("/conductor")
     context = {
         "notes": instance.notes,
         "instance": instance,
@@ -360,7 +369,10 @@ def changeEboard(request, id):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        return redirect("/president")
+        if request.user.is_superuser:
+            return redirect('/admin_page')
+        else:
+            return redirect("/president")
     context = {
         "firstName": instance.firstName,
         "lastName": instance.lastName,
@@ -385,7 +397,10 @@ def changeSection(request, id):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        return redirect("/president")
+        if request.user.is_superuser:
+            return redirect('/admin_page')
+        else:
+            return redirect("/president")
     context = {
         "firstName": instance.firstName,
         "lastName": instance.lastName,
