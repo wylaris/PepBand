@@ -242,7 +242,6 @@ def home(request):
         return render(request, "dashboard/home.html", {"list": publicSongList})
 
 
-
 # Login
 def login(request):
     """
