@@ -6,11 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c00d55cc-d813-45c7-bd74-a54f2e16495c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/static/music/Beverly Hills/jpg/Trumpet-1.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/static/music/Beverly Hills/pdf/Trumpet-1.pdf" afterPath="$PROJECT_DIR$/Server/static/music/Beverly Hills/pdf/Trumpet-1.pdf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PepBandWebsite/views.py" afterPath="$PROJECT_DIR$/PepBandWebsite/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/dashboard/pdfShow.html" afterPath="$PROJECT_DIR$/templates/dashboard/pdfShow.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PepBandWebsite$manage.coverage" NAME="manage Coverage Results" MODIFIED="1501120253578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PepBandWebsite$manage.coverage" NAME="manage Coverage Results" MODIFIED="1501123373651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -31,20 +29,18 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PepBandWebsite/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6028">
-              <caret line="320" column="52" lean-forward="true" selection-start-line="320" selection-start-column="52" selection-end-line="320" selection-end-column="52" />
-              <folding>
-                <element signature="e#54#90#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-627">
+              <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="changeInfo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/dashboard/changeInfo.html">
+      <file leaf-file-name="pdfShow.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/dashboard/pdfShow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="198">
+              <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -143,7 +139,6 @@
         <option value="$PROJECT_DIR$/templates/dashboard/post_form.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/changeEboard.html" />
         <option value="$PROJECT_DIR$/templates/dashboard/jpgShow.html" />
-        <option value="$PROJECT_DIR$/templates/dashboard/pdfShow.html" />
         <option value="$PROJECT_DIR$/templates/index/healthNetIndex.html" />
         <option value="$PROJECT_DIR$/templates/index/save.html" />
         <option value="$PROJECT_DIR$/Server/static/css/cover.css" />
@@ -175,6 +170,7 @@
         <option value="$PROJECT_DIR$/PepBandWebsite/models.py" />
         <option value="$PROJECT_DIR$/Server/urls.py" />
         <option value="$PROJECT_DIR$/templates/dashboard/admin_page.html" />
+        <option value="$PROJECT_DIR$/templates/dashboard/pdfShow.html" />
         <option value="$PROJECT_DIR$/PepBandWebsite/views.py" />
       </list>
     </option>
@@ -347,6 +343,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="music" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Beverly Hills" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pdf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PepBandWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PepBandWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PepBandWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PepBandWebsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="PepBandWebsite" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -363,19 +411,19 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static\music\Beverly Hills" />
-      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static\music" />
-      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static" />
-      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\media" />
-      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\templates\dashboard" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite" />
       <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static" />
       <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\templates\dashboard\patient" />
       <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\templates\dashboard" />
       <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static\music\Beverly Hills" />
+      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static\music" />
+      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\Server\static" />
+      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\media" />
+      <recent name="C:\Users\peyto_000\PycharmProjects\PepBandWebsite\templates\dashboard" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -799,13 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/pdfShow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="100" lean-forward="false" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard/post_form.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99">
@@ -1002,6 +1043,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/changeInfo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/dashboard/pdfShow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/dashboard/admin_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
@@ -1010,21 +1067,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/dashboard/changeInfo.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PepBandWebsite/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6028">
-          <caret line="320" column="52" lean-forward="true" selection-start-line="320" selection-start-column="52" selection-end-line="320" selection-end-column="52" />
-          <folding>
-            <element signature="e#54#90#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-627">
+          <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -12,7 +12,7 @@ from django.http import *
 from django.contrib import auth, messages
 from django.template import RequestContext
 from django.template.context_processors import csrf
-from os import *
+from os import listdir
 from django.contrib.auth.decorators import login_required, user_passes_test
 import os
 # Load Webpages
@@ -127,7 +127,7 @@ def admin_page(request):
     eBoardList = eBoard.objects.all
     sectionList = Section.objects.all()
     return render(request, "dashboard/admin_page.html",
-                  {"eboard": eBoardList, "section": sectionList, "list": totalSongList, "users":users})
+                  {"eboard": eBoardList, "section": sectionList, "list": totalSongList, "users": users})
 
 
 @user_passes_test(checkAdmin, login_url='/login/')
@@ -476,5 +476,9 @@ def pdfShow(request, slug, part):
     """
     song = Song.objects.get(slug=slug)
     part = part
-    address = "music/" + song.title + "/pdf/" + part
-    return render(request, "dashboard/pdfShow.html", {"part": part, "song": song, "address": address})
+    address = "Server/static/music/" + song.title + "/pdf/" + part
+    with open(address, 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = 'filename=some_file.pdf'
+        return response
+        # return render(request, "dashboard/pdfShow.html", {"part": part, "song": song, "address": address})
