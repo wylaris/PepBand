@@ -47,7 +47,7 @@
         <div class="col-lg-6">
             <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
 
-            <table id="songTable" align="center">
+            <table id="songTable" align="center" style="text-align: left">
                 {% for entries in list %}
                     <tr>
                         <td><a href={{ "/music/"|add:entries.slug }}><i
@@ -58,9 +58,9 @@
         </div>
         <div class="col-lg-6">
 
-            <div class="show-for-medium-up hide-for-medium-down">
+            <div class="show-for-medium-up hide-for-medium-down" style="padding-top: 3%">
                 <iframe src="https://www.google.com/calendar/embed?showTitle=0&showNav=0&showCalendars=0&showTz=0&height=600&wkst=1&bgcolor=%23FFFFFF&src=ritpepband@gmail.com&color=%23B1440E&ctz=America/New_York"
-                        style=" border-width:0 " width="600" height="500" frameborder="0" scrolling="no"></iframe>
+                        style=" border-width:0 " width="400" height="500" frameborder="0" scrolling="no"></iframe>
             </div>
 {#            <div class="show-for-small hide-for-medium-up">#}
 {#                <iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA&height=500&wkst=1&bgcolor=%23FFFFFF&src=ritpepband@gmail.com&color=%23B1440E&ctz=America/New_York"#}

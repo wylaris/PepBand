@@ -32,7 +32,7 @@
     <div class="row text-center">
         <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
 
-        <table id="songTable" align="center">
+        <table id="songTable" align="center" style="text-align: left">
             {% for entries in list %}
                 <tr>
                     <td><a href={{ entries.slug }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>

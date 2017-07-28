@@ -57,6 +57,7 @@ for entry in songEntries:
     else:
         if entry is not None:
             slug = entry.replace(" ", "-")
+            slug = slug.replace("'", "-")
             song = Song(title=entry, slug=slug)
             song.save()
 
@@ -307,8 +308,9 @@ def show_song(request, slug):
     :return: Renders the song page
     """
     audio = []
+    print("The slug is: " + slug)
+    slug = slug.replace("'", "-")
     name = Song.objects.get(slug=slug)
-    # address = "Server/static/music"
     address = 'Server/static/music/' + name.title
     if os.path.exists(address):
         for file in os.listdir(address):

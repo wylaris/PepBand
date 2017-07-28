@@ -30,7 +30,7 @@
         <div class="col-md-12"><h1 class="text-center">{{ songs }}</h1></div>
     </div>
     <div class="row text-center">
-        <table id="songTable" align="center">
+        <table id="songTable" align="center" style="text-align: left">
             {% for part in parts %}
                 <tr>
                     <td><a href="/music/{{ slug }}/jpg/{{ part }}/" target="_blank"><i class="fa fa-fw fa-picture-o"></i>{{ part }}</a>
