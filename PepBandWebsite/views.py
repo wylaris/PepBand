@@ -1,6 +1,7 @@
 """
 Views that control what happens in the system
 """
+import shutil
 from wsgiref.util import FileWrapper
 
 from django.apps import AppConfig
@@ -15,6 +16,7 @@ from django.template.context_processors import csrf
 from os import listdir
 from django.contrib.auth.decorators import login_required, user_passes_test
 import os
+from django.core.files import File
 import zipfile
 # Load Webpages
 from django.utils.encoding import smart_str
@@ -545,23 +547,54 @@ def pickSection(request):
 
 
 def downloadParts(request, section):
-    address = "Server/static/zipFile"
-    zfile = zipfile.ZipFile("%s.zip" % (address), "w", zipfile.ZIP_DEFLATED)
+    staticSection = section
+    address = "Server/static/zipFiles/" + section
     pathOrigin = "Server/static/music/"
+    if os.path.exists(address):
+        shutil.rmtree(address)
+    os.mkdir(address)
     if section != "Percussion":
         if section == "Saxophones":
             section = section.replace("Saxophones", "AltoSax")
         elif section == "Tenor-Saxophones":
             section = section.replace("Tenor-Saxophones", "TenorSax")
         section = section.replace("s", "")
-    for entry in totalSongList:
-        pathSecond = pathOrigin + entry.title + "/jpg/"
-        if os.path.exists(pathSecond):
-            for file in os.listdir(pathSecond):
-                if section in file:
-                    pathFinal = pathSecond + file
-                    # zfile.write(pathOrigin, entry.title+"/jpg/")
-                    zfile.write(pathFinal, file)
-    zfile.close()
-    filepath = "Server/static/zipFile.zip"
+        for entry in totalSongList:
+            subFolder = address + "/" + entry.title
+            if not os.path.exists(subFolder):
+                os.mkdir(subFolder)
+                pathSecond = pathOrigin + entry.title + "/jpg/"
+                if os.path.exists(pathSecond):
+                    for file in os.listdir(pathSecond):
+                        if section in file:
+                            pathFinal = pathSecond + file
+                            shutil.copyfile(pathFinal, address + "/" + entry.title + "/" + file)
+    zf = zipfile.ZipFile("Server/static/zipFiles/" + staticSection + ".zip", "w")
+    for dirname, subdirs, files in os.walk("Server/static/zipFiles/" + staticSection):
+        zf.write(dirname)
+        for filename in files:
+            zf.write(os.path.join(dirname, filename))
+    zf.close()
+    filepath = "Server/static/zipFiles/" + staticSection + ".zip"
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
+
+    # address = "Server/static/zipFile"
+    # zfile = zipfile.ZipFile("%s.zip" % (address), "w", zipfile.ZIP_DEFLATED)
+    # pathOrigin = "Server/static/music/"
+    # if section != "Percussion":
+    #     if section == "Saxophones":
+    #         section = section.replace("Saxophones", "AltoSax")
+    #     elif section == "Tenor-Saxophones":
+    #         section = section.replace("Tenor-Saxophones", "TenorSax")
+    #     section = section.replace("s", "")
+    # for entry in totalSongList:
+    #     pathSecond = pathOrigin + entry.title + "/jpg/"
+    #     if os.path.exists(pathSecond):
+    #         for file in os.listdir(pathSecond):
+    #             if section in file:
+    #                 pathFinal = pathSecond + file
+    #                 # zfile.write(pathOrigin, entry.title+"/jpg/")
+    #                 zfile.write(pathFinal, file)
+    # zfile.close()
+    # filepath = "Server/static/zipFile.zip"
+    # return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
