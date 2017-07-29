@@ -38,10 +38,12 @@ urlpatterns = [
     url(r'^music/(?P<slug>[\w\-]+)/jpg/(?P<part>.*)/$', views.jpgShow, name='songHandler'),  # URL for the page that emebeds the JPG file
     url(r'^music/(?P<slug>[\w\-]+)/pdf/$', views.pdf, name='songHandler'),  # URL for the PDF
     url(r'^music/(?P<slug>[\w\-]+)/pdf/(?P<part>.*)/$', views.pdfShow, name='songHandler'),  # URL for the page that emebeds the PDF file
-    url(r'^conductor/$', views.conductor, name='songs'),  # URL for the conductor page
+    url(r'^conductor/$', views.conductor, name='conductor'),  # URL for the conductor page
     url(r'^conductor/(?P<slug>[\w\-]+)/$', views.changeStatus, name='changeStatus'),  # URL for the page that changes the status of a song
     url(r'^conductor/(?P<slug>[\w\-]+)/change/$', views.changeNotes, name='changeStatus'),  # URL for the page that changes that notes of a song
-    url(r'^president/$', views.president, name='songs'),  # URL for the president page
+    url(r'^president/$', views.president, name='president'),  # URL for the president page
     url(r'^president/eboard/(?P<id>[\w\-]+)/$', views.changeEboard, name='songs'),  # URL for the page that changes fields for a eboard entry
     url(r'^president/section/(?P<id>[\w\-]+)/$', views.changeSection, name='songs'),  # URL for the page that changes fields for a section leader entry
+    url(r'^pick_section/$', views.pickSection, name='pick_section'),  # URL for the music page
+    url(r'^pick_section/(?P<section>.*)/download/$', views.downloadParts, name='downlaodParts'),  # URL for the music page
 ]

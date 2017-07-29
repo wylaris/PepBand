@@ -15,9 +15,11 @@ from django.template.context_processors import csrf
 from os import listdir
 from django.contrib.auth.decorators import login_required, user_passes_test
 import os
+import zipfile
 # Load Webpages
 from django.utils.encoding import smart_str
 from django.views.generic import UpdateView
+from django.views.static import serve
 
 from PepBandWebsite.forms import changeEBoard, changeSong
 from PepBandWebsite.models import Song, eBoard, Section
@@ -56,8 +58,17 @@ for entry in songEntries:
         pass
     else:
         if entry is not None:
+            print("slug = " + entry)
             slug = entry.replace(" ", "-")
+            print("This is the updated slug: " + slug)
             slug = slug.replace("'", "-")
+            print("This is the updated slug: " + slug)
+            slug = slug.replace("(", "-")
+            print("This is the updated slug: " + slug)
+            slug = slug.replace(")", "-")
+            print("This is the updated slug: " + slug)
+            slug = slug.replace('!', '-')
+            print("This is the final updated slug: " + slug)
             song = Song(title=entry, slug=slug)
             song.save()
 
@@ -520,3 +531,37 @@ def pdfShow(request, slug, part):
         response['Content-Disposition'] = 'filename=some_file.pdf'
         return response
         # return render(request, "dashboard/pdfShow.html", {"part": part, "song": song, "address": address})
+
+
+def pickSection(request):
+    sections = Section.objects.all()
+    role = []
+    for section in sections:
+        replaced = section.section
+        replaced = replaced.replace(" ", "-")
+        role.append(replaced)
+    print(role)
+    return render(request, "dashboard/pick_section.html", {"sections": role})
+
+
+def downloadParts(request, section):
+    address = "Server/static/zipFile"
+    zfile = zipfile.ZipFile("%s.zip" % (address), "w", zipfile.ZIP_DEFLATED)
+    pathOrigin = "Server/static/music/"
+    if section != "Percussion":
+        if section == "Saxophones":
+            section = section.replace("Saxophones", "AltoSax")
+        elif section == "Tenor-Saxophones":
+            section = section.replace("Tenor-Saxophones", "TenorSax")
+        section = section.replace("s", "")
+    for entry in totalSongList:
+        pathSecond = pathOrigin + entry.title + "/jpg/"
+        if os.path.exists(pathSecond):
+            for file in os.listdir(pathSecond):
+                if section in file:
+                    pathFinal = pathSecond + file
+                    # zfile.write(pathOrigin, entry.title+"/jpg/")
+                    zfile.write(pathFinal, file)
+    zfile.close()
+    filepath = "Server/static/zipFile.zip"
+    return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
