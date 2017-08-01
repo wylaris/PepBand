@@ -219,7 +219,7 @@ def eboard(request):
     :return: Renders the eboard page
     """
     eBoardList = eBoard.objects.all
-    return render(request, "dashboard/eboard.html", {"list": eBoardList})
+    return render(request, "dashboard/eboard.html", {"eboard": eBoardList})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -230,7 +230,7 @@ def section_leaders(request):
     :return: Renders the section leader page
     """
     sectionList = Section.objects.all()
-    return render(request, "dashboard/section_leaders.html", {"list": sectionList})
+    return render(request, "dashboard/section_leaders.html", {"section": sectionList})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -282,10 +282,10 @@ def auth_view(request):
         auth.login(request, user)
         if user.groups.filter(name="Admin").count():
             return HttpResponseRedirect('/home')
-        elif user.groups.filter(name="Conductor").count():
-            return HttpResponseRedirect('/conductor')
         elif user.groups.filter(name="President").count():
             return HttpResponseRedirect('/president')
+        elif user.groups.filter(name="Conductor").count():
+            return HttpResponseRedirect('/conductor')
         else:
             return HttpResponseRedirect('/home')
     else:
@@ -321,6 +321,7 @@ def show_song(request, slug):
     :return: Renders the song page
     """
     audio = []
+    sections = Section.objects.all()
     print("The slug is: " + slug)
     slug = slug.replace("'", "-")
     name = Song.objects.get(slug=slug)
@@ -330,7 +331,7 @@ def show_song(request, slug):
             if file.endswith(".wav") or file.endswith(".mp3"):
                 audio.append(file)
                 print("success")
-        return render(request, "dashboard/success.html", {"song": name, "audio": audio})
+        return render(request, "dashboard/success.html", {"song": name, "audio": audio, "section": sections})
     else:
         return HttpResponseRedirect('/404')
 

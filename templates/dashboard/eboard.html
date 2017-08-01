@@ -30,25 +30,34 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-12"><h1 class="text-center">Eboard</h1></div>
+            <div class="col-md-12"><h1 class="text-center">eBoard</h1></div>
+            <form method="POST" action="">
+                {% csrf_token %}
+            </form>
         </div>
-        <div class="container">
-            <div class="row">
-                {% for entry in list %}
-                    <div class="col-md-12">
-                        <div class="media">
-                            <div class="media-left">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">{{ entry.position }}</h4>
-                                <p>&nbsp; &nbsp;{{ entry }} <br> &nbsp; &nbsp;Cell: <a
-                                        href="tel:{{ entry.cell }}">{{ entry.cell }}</a> <br> &nbsp; &nbsp;Email: <a
-                                        href="mailto:{{ entry.email }}">{{ entry.email }}</a></p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
+        <div class="row text-center">
+            <div class="col-md-3">
+                <h3><p class="text-success">Position</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Name</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Cell</p></h3>
+            </div>
+            <div class="col-md-3">
+                <h3><p class="text-success">Email</p></h3>
             </div>
         </div>
+        <hr>
+        {% for entry in eboard %}
+            <div class="row text-center">
+                <div class="col-md-3">{{ entry.position }}</div>
+                <div class="col-md-3">{{ entry }}</div>
+                <div class="col-md-3"><a href="tel:{{ entry.cell }}">{{ entry.cell }}</a></div>
+                <div class="col-md-3"><a href="mailto:{{ entry.email }}" target="_top">{{ entry.email }}</a></div>
+            </div>
+            <hr>
+        {% endfor %}
     </div>
 {% endblock %}
