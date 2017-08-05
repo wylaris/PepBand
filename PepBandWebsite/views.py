@@ -165,7 +165,11 @@ def notFound(request):
     :param request: Request
     :return: Renders the 404 page
     """
-    return render(request, "dashboard/404.html")
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/404.html", {"base": base})
 
 
 @user_passes_test(checkAdmin, login_url='/login/')
@@ -174,8 +178,12 @@ def admin_page(request):
     print(users)
     eBoardList = eBoard.objects.all
     sectionList = Section.objects.all()
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     return render(request, "dashboard/admin_page.html",
-                  {"eboard": eBoardList, "section": sectionList, "list": totalSongList, "users": users})
+                  {"eboard": eBoardList, "section": sectionList, "list": totalSongList, "users": users, "base": base})
 
 
 @user_passes_test(checkAdmin, login_url='/login/')
@@ -196,9 +204,12 @@ def changePassword(request, username):
     else:
         form = PasswordChangeForm(request.user)
         request.user = realUser
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     return render(request, 'dashboard/change_password.html', {
-        'form': form
-    })
+        'form': form, "base": base})
 
 
 @user_passes_test(checkAdmin, login_url='/login/')
@@ -208,7 +219,11 @@ def deleteSong(request, slug):
     global totalSongList
     publicSongList = Song.objects.filter(status='Public').order_by('title')
     totalSongList = Song.objects.all().order_by('title')
-    return HttpResponseRedirect('/admin_page')
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return HttpResponseRedirect('/admin_page', {"base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -219,7 +234,11 @@ def eboard(request):
     :return: Renders the eboard page
     """
     eBoardList = eBoard.objects.all
-    return render(request, "dashboard/eboard.html", {"eboard": eBoardList})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/eboard.html", {"eboard": eBoardList, "base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -230,7 +249,11 @@ def section_leaders(request):
     :return: Renders the section leader page
     """
     sectionList = Section.objects.all()
-    return render(request, "dashboard/section_leaders.html", {"section": sectionList})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/section_leaders.html", {"section": sectionList, "base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -240,7 +263,11 @@ def constitution(request):
     :param request: Request
     :return: Renders the documents page
     """
-    return render(request, "dashboard/constitution.html")
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/constitution.html", {"base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -280,12 +307,16 @@ def auth_view(request):
 
     if user is not None:
         auth.login(request, user)
+        if mobileBrowser(request):
+            base = "dashboard/m_base.html"
+        else:
+            base = "dashboard/base.html"
         if user.groups.filter(name="Admin").count():
             return HttpResponseRedirect('/home')
         elif user.groups.filter(name="President").count():
-            return HttpResponseRedirect('/president')
+            return HttpResponseRedirect('/president', {"base": base})
         elif user.groups.filter(name="Conductor").count():
-            return HttpResponseRedirect('/conductor')
+            return HttpResponseRedirect('/conductor', {"base": base})
         else:
             return HttpResponseRedirect('/home')
     else:
@@ -299,7 +330,11 @@ def memes(request):
     :param request: Request
     :return: Render the memes page
     """
-    return render(request, 'dashboard/memes.html', {"list": memeEntries})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, 'dashboard/memes.html', {"list": memeEntries, "base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -309,7 +344,11 @@ def songs(request):
     :param request: Request
     :return: Renders the music page with all the music
     """
-    return render(request, 'dashboard/music.html', {"list": totalSongList})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, 'dashboard/music.html', {"list": totalSongList, "base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -326,14 +365,19 @@ def show_song(request, slug):
     slug = slug.replace("'", "-")
     name = Song.objects.get(slug=slug)
     address = 'Server/static/music/' + name.title
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     if os.path.exists(address):
         for file in os.listdir(address):
             if file.endswith(".wav") or file.endswith(".mp3"):
                 audio.append(file)
                 print("success")
-        return render(request, "dashboard/success.html", {"song": name, "audio": audio, "section": sections})
+        return render(request, "dashboard/success.html",
+                      {"song": name, "audio": audio, "section": sections, "base": base})
     else:
-        return HttpResponseRedirect('/404')
+        return HttpResponseRedirect('/404', {"base": base})
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -343,7 +387,11 @@ def conductor(request):
     :param request: Request
     :return: Renders the conductor dashboard
     """
-    return render(request, "dashboard/conductor.html", {"list": totalSongList})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/conductor.html", {"list": totalSongList, "base": base})
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -364,10 +412,14 @@ def changeStatus(request, slug):
     global totalSongList
     publicSongList = Song.objects.filter(status='Public').order_by('title')
     totalSongList = Song.objects.all().order_by('title')
-    if request.user.is_superuser:
-        return HttpResponseRedirect('/admin_page')
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
     else:
-        return HttpResponseRedirect('/conductor')
+        base = "dashboard/base.html"
+    if request.user.is_superuser:
+        return HttpResponseRedirect('/admin_page', {"base": base})
+    else:
+        return HttpResponseRedirect('/conductor', {"base": base})
 
 
 @user_passes_test(checkConductor, login_url='/login/')
@@ -392,7 +444,11 @@ def changeNotes(request, slug):
         "instance": instance,
         "form": form
     }
-    return render(request, "dashboard/changeInfo.html", context)
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/changeInfo.html", context, {"base": base})
 
 
 @user_passes_test(checkPresident, login_url='/login/')
@@ -405,7 +461,11 @@ def president(request):
     """
     eBoardList = eBoard.objects.all
     sectionList = Section.objects.all()
-    return render(request, "dashboard/president.html", {"eboard": eBoardList, "section": sectionList})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/president.html", {"eboard": eBoardList, "section": sectionList, "base": base})
 
 
 @user_passes_test(checkPresident, login_url='/login/')
@@ -433,7 +493,11 @@ def changeEboard(request, id):
         "instance": instance,
         "form": form
     }
-    return render(request, "dashboard/changeInfo.html", context)
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/changeInfo.html", context, {"base": base})
 
 
 @user_passes_test(checkPresident, login_url='/login/')
@@ -461,11 +525,15 @@ def changeSection(request, id):
         "instance": instance,
         "form": form
     }
-    return render(request, "dashboard/changeInfo.html", context)
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/changeInfo.html", context, {"base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
-def jpg(request, slug):
+def jpg(request, slug, section):
     """
     Loads a list of JPG files for the selected song
     :param request: Request
@@ -475,12 +543,23 @@ def jpg(request, slug):
     name = Song.objects.get(slug=slug)
     parts = []
     address = 'Server/static/music/' + name.title + '/jpg'
+    if section != "Percussion":
+        if section == "Saxophones":
+            section = section.replace("Saxophones", "AltoSax")
+        elif section == "Tenor-Saxophones":
+            section = section.replace("Tenor-Saxophones", "TenorSax")
+        section = section.replace("s", "")
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     if os.path.exists(address):
         for folder in listdir(address):
-            parts.append(folder)
-        return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts, "slug": slug})
+            if section in folder:
+                parts.append(folder)
+        return render(request, "dashboard/jpg.html", {"songs": name.title, "parts": parts, "slug": slug, "base": base})
     else:
-        return HttpResponseRedirect('/404')
+        return HttpResponseRedirect('/404', {"base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -495,11 +574,15 @@ def jpgShow(request, slug, part):
     song = Song.objects.get(slug=slug)
     part = part
     address = "music/" + song.title + "/jpg/" + part
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     return render(request, "dashboard/jpgShow.html", {"part": part, "song": song, "address": address})
 
 
 @user_passes_test(checkMember, login_url='/login/')
-def pdf(request, slug):
+def pdf(request, slug, section):
     """
     Loads a list of PDF files for the selected song
     :param request: Request
@@ -509,12 +592,23 @@ def pdf(request, slug):
     name = Song.objects.get(slug=slug)
     parts = []
     address = 'Server/static/music/' + name.title + '/pdf'
+    if section != "Percussion":
+        if section == "Saxophones":
+            section = section.replace("Saxophones", "AltoSax")
+        elif section == "Tenor-Saxophones":
+            section = section.replace("Tenor-Saxophones", "TenorSax")
+        section = section.replace("s", "")
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     if os.path.exists(address):
         for folder in listdir(address):
-            parts.append(folder)
-        return render(request, "dashboard/pdf.html", {"songs": name.title, "parts": parts, "slug": slug})
+            if section in folder:
+                parts.append(folder)
+        return render(request, "dashboard/pdf.html", {"songs": name.title, "parts": parts, "slug": slug, "base": base})
     else:
-        return HttpResponseRedirect('/404')
+        return HttpResponseRedirect('/404', {"base": base})
 
 
 @user_passes_test(checkMember, login_url='/login/')
@@ -537,17 +631,31 @@ def pdfShow(request, slug, part):
 
 
 def pickSection(request):
+    """
+    Renders a page that allows the user to download all the parts for a section
+    :param request: Request
+    :return: Renders the page where all sections appear as a button
+    """
     sections = Section.objects.all()
     role = []
     for section in sections:
         replaced = section.section
         replaced = replaced.replace(" ", "-")
         role.append(replaced)
-    print(role)
-    return render(request, "dashboard/pick_section.html", {"sections": role})
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/pick_section.html", {"sections": role, "base": base})
 
 
 def downloadParts(request, section):
+    """
+    Allows the user to download a zipfile with all the songs for the selected section
+    :param request: Request
+    :param section: Section selected
+    :return: Downloads a zipfile of the parts
+    """
     staticSection = section
     address = "Server/static/zipFiles/" + section
     pathOrigin = "Server/static/music/"
@@ -578,24 +686,3 @@ def downloadParts(request, section):
     zf.close()
     filepath = "Server/static/zipFiles/" + staticSection + ".zip"
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
-
-    # address = "Server/static/zipFile"
-    # zfile = zipfile.ZipFile("%s.zip" % (address), "w", zipfile.ZIP_DEFLATED)
-    # pathOrigin = "Server/static/music/"
-    # if section != "Percussion":
-    #     if section == "Saxophones":
-    #         section = section.replace("Saxophones", "AltoSax")
-    #     elif section == "Tenor-Saxophones":
-    #         section = section.replace("Tenor-Saxophones", "TenorSax")
-    #     section = section.replace("s", "")
-    # for entry in totalSongList:
-    #     pathSecond = pathOrigin + entry.title + "/jpg/"
-    #     if os.path.exists(pathSecond):
-    #         for file in os.listdir(pathSecond):
-    #             if section in file:
-    #                 pathFinal = pathSecond + file
-    #                 # zfile.write(pathOrigin, entry.title+"/jpg/")
-    #                 zfile.write(pathFinal, file)
-    # zfile.close()
-    # filepath = "Server/static/zipFile.zip"
-    # return serve(request, os.path.basename(filepath), os.path.dirname(filepath))

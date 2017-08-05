@@ -1,29 +1,10 @@
-{% extends "dashboard/base.html" %}
+{% extends base %}
 
 {% block styles %}
     {% load static %}
     <!-- Custom styles for this template -->
     <link href={% static "css/info.css" %} rel="stylesheet">
 {% endblock %}
-
-{#{% block options %}#}
-{#    <li>#}
-{#        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
-{#                class="fa fa-fw fa-folder-open"></i> Information<i#}
-{#                class="fa fa-fw fa-caret-down"></i></a>#}
-{#        <ul id="mess" class="collapse">#}
-{#            <li>#}
-{#                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>#}
-{#            </li>#}
-{#            <li>#}
-{#                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>#}
-{#            </li>#}
-{#            <li>#}
-{#                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>#}
-{#            </li>#}
-{#        </ul>#}
-{#    </li>#}
-{#{% endblock %}#}
 
 {% block content %}
     <div class="container">
@@ -48,12 +29,12 @@
                 <div class="col-md-4">
                     <input type="button" class="btn btn-sm btn-primary"
                            value="JPG" onclick="location.href
-                    = '/music/{{ song.slug }}/jpg';">
+                    = '/music/{{ song.slug }}/jpg/{{ leader.section }}';">
                 </div>
                 <div class="col-md-4">
                     <input type="button" class="btn btn-sm btn-primary"
                            value="PDF" onclick="location.href
-                    = '/music/{{ song.slug }}/pdf';">
+                    = '/music/{{ song.slug }}/pdf/{{ leader.section }}';">
                 </div>
             </div>
             <hr>

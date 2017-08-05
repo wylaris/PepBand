@@ -1,31 +1,10 @@
-{% extends "dashboard/base.html" %}
+{% extends base %}
 
 {% block styles %}
     {% load static %}
     <!-- Custom styles for this template -->
     <link href={% static "css/info.css" %} rel="stylesheet">
 {% endblock %}
-
-{#{% block options %}#}
-{#    <li>#}
-{#        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
-{#                class="fa fa-fw fa-folder-open"></i> Information<i#}
-{#                class="fa fa-fw fa-caret-down"></i></a>#}
-{#        <ul id="mess" class="collapse">#}
-{#            <li>#}
-{#                <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>#}
-{#            </li>#}
-{#            <li>#}
-{#                <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>#}
-{#            </li>#}
-{#            <li>#}
-{#                <a href="/constitution"><i class="fa fa-fw fa-file"></i> Documents</a>#}
-{#            </li>#}
-{#        </ul>#}
-{#    </li>#}
-{#    </ul>#}
-{#    </div>#}
-{#{% endblock %}#}
 
 {% block content %}
     <div class="container">
@@ -36,26 +15,33 @@
             </form>
         </div>
         <div class="row text-center">
-            <div class="col-md-3">
+            <div class="col-md-2">
+                <h3><p class="text-success"> </p></h3>
+            </div>
+            <div class="col-md-2">
                 <h3><p class="text-success">Section</p></h3>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <h3><p class="text-success">Name</p></h3>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <h3><p class="text-success">Cell</p></h3>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <h3><p class="text-success">Email</p></h3>
             </div>
         </div>
         <hr>
         {% for leader in section %}
             <div class="row text-center">
-                <div class="col-md-3">{{ leader.section }}</div>
-                <div class="col-md-3">{{ leader }}</div>
-                <div class="col-md-3"><a href="tel:{{ leader.cell }}">{{ leader.cell }}</a></div>
-                <div class="col-md-3"><a href="mailto:{{ leader.email }}" target="_top">{{ leader.email }}</a></div>
+                <div class="col-md-2">
+                    <img src={% static "pictures/"|add:leader.section|add:".jpg" %} alt="{{ entry.slug }}"
+                         style="width:100%;height:100%;">
+                </div>
+                <div class="col-md-2">{{ leader.section }}</div>
+                <div class="col-md-2">{{ leader }}</div>
+                <div class="col-md-2"><a href="tel:{{ leader.cell }}">{{ leader.cell }}</a></div>
+                <div class="col-md-2"><a href="mailto:{{ leader.email }}" target="_top">{{ leader.email }}</a></div>
             </div>
             <hr>
         {% endfor %}
