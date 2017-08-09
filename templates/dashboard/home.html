@@ -18,9 +18,9 @@
     <hr>
     <div class="row text-center">
         <div class="col-lg-6">
-            <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
+            <input type="text" style="width:40%" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
 
-            <table id="songTable" align="center" style="text-align: left">
+            <table id="songTable" align="center" style="text-align: left; width: 40%">
                 {% for entries in list %}
                     <tr>
                         <td><a href={{ "/music/"|add:entries.slug }}><i
