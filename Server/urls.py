@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, handler404, handler500
 from django.contrib import admin
 from PepBandWebsite import views
 from Server import settings
@@ -24,6 +24,7 @@ urlpatterns = [
     #url(r'^login/$', views.login, name='login'), #URL for the login page (not being used)
     url(r'^auth/$', views.auth_view, name='auth_view'), #URL for the authentication page
     url(r'^404/$', views.notFound, name='notFound'),  # URL for the 404 page
+    url(r'^500/$', views.custom500, name='500'),  # URL for the 404 page
     url(r'^eboard/$', views.eboard, name='eboard'),  #URL for the eboard page
     url(r'^section_leaders/$', views.section_leaders, name='section_leaders'), #URL for the section leader page
     url(r'^documents/$', views.constitution, name='documents'),  #URL for the documents page
@@ -39,6 +40,7 @@ urlpatterns = [
     url(r'^music/(?P<slug>[\w\-]+)/pdf/(?P<section>.*)/$', views.pdf, name='songHandler'),  # URL for the PDF
     url(r'^music/(?P<slug>[\w\-]+)/(?P<part>.*)/$', views.pdfShow, name='songHandler'),  # URL for the page that emebeds the JPG file
     url(r'^conductor/$', views.conductor, name='conductor'),  # URL for the conductor page
+    url(r'^conductor/change_all/Public/$', views.allChange, name='conductor'),  # URL for the conductor page
     url(r'^conductor/(?P<slug>[\w\-]+)/$', views.changeStatus, name='changeStatus'),  # URL for the page that changes the status of a song
     url(r'^conductor/(?P<slug>[\w\-]+)/change/$', views.changeNotes, name='changeStatus'),  # URL for the page that changes that notes of a song
     url(r'^president/$', views.president, name='president'),  # URL for the president page
@@ -46,4 +48,8 @@ urlpatterns = [
     url(r'^president/section/(?P<id>[\w\-]+)/$', views.changeSection, name='songs'),  # URL for the page that changes fields for a section leader entry
     url(r'^pick_section/$', views.pickSection, name='pick_section'),  # URL for the pick section page
     url(r'^pick_section/(?P<section>.*)/download/$', views.downloadParts, name='downlaodParts'),  # URL for the download music page
+    url(r'^not_my_president/$', views.not_my_president, name='not_my_president'),  # URL for the music page
 ]
+
+handler404 = views.custom404
+handler500 = views.custom500

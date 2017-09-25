@@ -1,0 +1,18 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row text-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" frameborder="0"
+                allowfullscreen></iframe>
+        <p></p>
+        <img src={% static "pres/drink.jpg" %} width="30%" height="30%" alt="NA">
+        <p></p>
+        <img src={% static "pres/swim.jpg" %} width="30%" height="30%" alt="NA">
+    </div>
+{% endblock %}

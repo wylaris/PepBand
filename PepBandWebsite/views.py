@@ -77,7 +77,6 @@ for entry in songEntries:
 # Generates the song lists
 publicSongList = Song.objects.filter(status='Public').order_by('title')
 totalSongList = Song.objects.all().order_by('title')
-print(totalSongList)
 
 # list of mobile User Agents
 mobile_uas = [
@@ -147,6 +146,22 @@ def checkPresident(user):
     return user.groups.filter(name="President")
 
 
+def custom404(request):
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/404.html", {"base": base})
+
+
+def custom500(request):
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/500.html", {"base": base})
+
+
 def index(request):
     """
     Landing page for the site
@@ -175,7 +190,6 @@ def notFound(request):
 @user_passes_test(checkAdmin, login_url='/login/')
 def admin_page(request):
     users = User.objects.values_list('username', flat=True)
-    print(users)
     eBoardList = eBoard.objects.all
     sectionList = Section.objects.all()
     if mobileBrowser(request):
@@ -361,10 +375,24 @@ def show_song(request, slug):
     """
     audio = []
     sections = Section.objects.all()
-    print("The slug is: " + slug)
     slug = slug.replace("'", "-")
     name = Song.objects.get(slug=slug)
     address = 'Server/static/music/' + name.title
+    parts = []
+    partsFinal = []
+    addressJPG = 'Server/static/music/' + name.title + '/jpg'
+    addressPDF = 'Server/static/music/' + name.title + '/pdf'
+    if os.path.exists(addressJPG) and os.path.exists(addressPDF):
+        for folder in listdir(addressJPG):
+            parts.append(folder)
+        for folder in listdir(addressPDF):
+            parts.append(folder)
+    for part in parts:
+        part = part.replace(".jpg", "")
+        part = part.replace(".pdf", "")
+        partsFinal.append(part)
+    partsFinal = list(set(partsFinal))
+    partsFinal = sorted(partsFinal)
     if mobileBrowser(request):
         base = "dashboard/m_base.html"
     else:
@@ -373,9 +401,8 @@ def show_song(request, slug):
         for file in os.listdir(address):
             if file.endswith(".wav") or file.endswith(".mp3"):
                 audio.append(file)
-                print("success")
         return render(request, "dashboard/success.html",
-                      {"song": name, "audio": audio, "section": sections, "base": base})
+                      {"song": name, "audio": audio, "section": sections, "base": base, "parts": partsFinal})
     else:
         return HttpResponseRedirect('/404', {"base": base})
 
@@ -394,7 +421,7 @@ def conductor(request):
     return render(request, "dashboard/conductor.html", {"list": totalSongList, "base": base})
 
 
-@user_passes_test(checkConductor, login_url='/login/')
+@user_passes_test(checkConductor, login_url='/')
 def changeStatus(request, slug):
     """
     Toggles the status of the song between Public and Private
@@ -418,6 +445,28 @@ def changeStatus(request, slug):
         base = "dashboard/base.html"
     if request.user.is_superuser:
         return HttpResponseRedirect('/admin_page', {"base": base})
+    elif checkPresident(request.user):
+        return HttpResponseRedirect('/president', {"base": base})
+    else:
+        return HttpResponseRedirect('/conductor', {"base": base})
+
+@user_passes_test(checkConductor, login_url='/')
+def allChange(request):
+    for song in Song:
+        song.status = 'Public'
+        song.save()
+    global publicSongList
+    global totalSongList
+    publicSongList = Song.objects.filter(status='Public').order_by('title')
+    totalSongList = Song.objects.all().order_by('title')
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    if request.user.is_superuser:
+        return HttpResponseRedirect('/admin_page', {"base": base})
+    elif checkPresident(request.user):
+        return HttpResponseRedirect('/president', {"base": base})
     else:
         return HttpResponseRedirect('/conductor', {"base": base})
 
@@ -432,22 +481,24 @@ def changeNotes(request, slug):
     """
     instance = get_object_or_404(Song, slug=slug)
     form = changeSong(request.POST or None, instance=instance)
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
         if request.user.is_superuser:
-            return redirect('/admin_page')
+            return HttpResponseRedirect('/admin_page', {"base": base})
+        elif checkPresident(request.user):
+            return HttpResponseRedirect('/president', {"base": base})
         else:
-            return redirect("/conductor")
+            return HttpResponseRedirect('/conductor', {"base": base})
     context = {
         "notes": instance.notes,
         "instance": instance,
         "form": form
     }
-    if mobileBrowser(request):
-        base = "dashboard/m_base.html"
-    else:
-        base = "dashboard/base.html"
     return render(request, "dashboard/changeInfo.html", context, {"base": base})
 
 
@@ -465,7 +516,8 @@ def president(request):
         base = "dashboard/m_base.html"
     else:
         base = "dashboard/base.html"
-    return render(request, "dashboard/president.html", {"eboard": eBoardList, "section": sectionList, "base": base})
+    return render(request, "dashboard/president.html",
+                  {"eboard": eBoardList, "section": sectionList, "list": totalSongList, "base": base})
 
 
 @user_passes_test(checkPresident, login_url='/login/')
@@ -686,3 +738,11 @@ def downloadParts(request, section):
     zf.close()
     filepath = "Server/static/zipFiles/" + staticSection + ".zip"
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
+
+
+def not_my_president(request):
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/not_my_president.html", {"base": base})

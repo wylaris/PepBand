@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
         <div class="row">
             <div class="col-md-12"><h1 class="text-center">{{ song }}</h1></div>
         </div>
@@ -23,33 +22,21 @@
             </div>
         </div>
         <hr>
-        {% for leader in section %}
+        {% for part in parts %}
             <div class="row text-center">
-                <div class="col-md-4">{{ leader.section }}</div>
-                <div class="col-md-4">
-                    <input type="button" class="btn btn-sm btn-primary"
-                           value="JPG" onclick="location.href
-                    = '/music/{{ song.slug }}/jpg/{{ leader.section }}';">
+                <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">{{ part }}</div>
+                <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">
+                    <a href="/music/{{ song.slug }}/show/{{ part|add:".jpg" }}/" target="_blank"><i
+                            class="fa fa-fw fa-picture-o"></i>{{ part }}</a>
                 </div>
-                <div class="col-md-4">
-                    <input type="button" class="btn btn-sm btn-primary"
-                           value="PDF" onclick="location.href
-                    = '/music/{{ song.slug }}/pdf/{{ leader.section }}';">
+                <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">
+                    <a href="/music/{{ song.slug }}/{{ part|add:".pdf" }}/" target="_blank"><i
+                            class="fa fa-fw fa-file"></i>{{ part }}</a>
                 </div>
             </div>
             <hr>
         {% endfor %}
     </div>
-{#    <div class="row text-left">#}
-{#        <table id="songTable" align="left">#}
-{#            <tr>#}
-{#                <td><a href="jpg/"><i class="fa fa-fw fa-picture-o" style="font-size: 22px"></i> JPG</a></td>#}
-{#            </tr>#}
-{#            <tr>#}
-{#                <td><a href="pdf/"><i class="fa fa-fw fa-file-pdf-o" style="font-size: 22px"></i> PDF</a></td>#}
-{#            </tr>#}
-{#        </table>#}
-{#    </div>#}
     <div class="row text-left">
         <div class="col-sm-12">
             <h3><p class="text-success">Audio File</p></h3>

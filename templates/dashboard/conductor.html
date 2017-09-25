@@ -15,6 +15,18 @@
             </form>
         </div>
         <div class="row text-center">
+            <div class="col-md-6">
+                <input type="button" class="btn btn-sm btn-primary"
+                       value="All Public" onclick="location.href
+                = '/conductor/change_all/Public/';">
+            </div>
+{#            <div class="col-md-6">#}
+{#                <input type="button" class="btn btn-sm btn-primary"#}
+{#                       value="All Private" onclick="location.href#}
+{#                = '/conductor/change_all/Private/';">#}
+{#            </div>#}
+        </div>
+        <div class="row text-center">
             <div class="col-md-4">
                 <h3><p class="text-success">Title</p></h3>
             </div>
@@ -30,12 +42,13 @@
             <div class="row text-center">
                 <div class="col-md-4">{{ entry.title }}</div>
                 <div class="col-md-4">
-                    <input type="button" class="btn btn-sm btn-primary" value={{ entry.status }} onclick="location.href
+                    <input type="button" class="btn btn-sm btn-primary"
+                           value={{ entry.status }} onclick="location.href
                     = '/conductor/{{ entry.slug }}';">
                 </div>
                 <div class="col-md-4">
-                    <input type="button"  class="btn btn-sm btn-primary" value="Change" onclick="location.href
-                    = '/conductor/{{ entry.slug }}/change';">
+                    <input type="button" class="btn btn-sm btn-primary" value="Change" onclick="location.href
+                            = '/conductor/{{ entry.slug }}/change';">
                 </div>
             </div>
             <hr>
