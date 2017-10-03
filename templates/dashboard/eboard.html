@@ -14,6 +14,7 @@
                 {% csrf_token %}
             </form>
         </div>
+        <!-- Sets up the formatting for infromation for each eboard member -->
         <div class="row text-center">
             <div class="col-md-2">
                 <h3><p class="text-success"></p></h3>
@@ -33,6 +34,7 @@
         </div>
         <hr>
         {% for entry in eboard %}
+        <!-- Sets up image formatting for each eboard member -->
             <div class="row text-center">
             <div class="col-md-2">
                 <img src={% static "pictures/"|add:entry.slug|add:".jpg" %} alt="{{ entry.slug }}" style="width:100%;height:100%;">
