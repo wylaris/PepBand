@@ -48,7 +48,6 @@ urlpatterns = [
     url(r'^president/section/(?P<id>[\w\-]+)/$', views.changeSection, name='songs'),  # URL for the page that changes fields for a section leader entry
     url(r'^pick_section/$', views.pickSection, name='pick_section'),  # URL for the pick section page
     url(r'^pick_section/(?P<section>.*)/download/$', views.downloadParts, name='downlaodParts'),  # URL for the download music page
-    url(r'^not_my_president/$', views.not_my_president, name='not_my_president'),  # URL for the music page
 ]
 
 handler404 = views.custom404

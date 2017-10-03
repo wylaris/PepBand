@@ -739,10 +739,3 @@ def downloadParts(request, section):
     filepath = "Server/static/zipFiles/" + staticSection + ".zip"
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
 
-
-def not_my_president(request):
-    if mobileBrowser(request):
-        base = "dashboard/m_base.html"
-    else:
-        base = "dashboard/base.html"
-    return render(request, "dashboard/not_my_president.html", {"base": base})
