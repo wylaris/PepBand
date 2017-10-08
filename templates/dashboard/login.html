@@ -1,9 +1,10 @@
 {% extends 'dashboard/base.html' %}
-
+<!-- Not used for login currently, go to index for actual login source -->
 {% block title %}Login{% endblock %}
 
 {% block content %}
     {% if form.errors %}
+    <!-- Checks for correct user, if not, returns result -->
         <p class="error">Sorry, that's not a valid username or password</p>
     {% endif %}
 
