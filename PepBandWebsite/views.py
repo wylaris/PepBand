@@ -23,6 +23,7 @@ from django.utils.encoding import smart_str
 from django.views.generic import UpdateView
 from django.views.static import serve
 
+from PepBandWebsite import IPCatch
 from PepBandWebsite.forms import changeEBoard, changeSong
 from PepBandWebsite.models import Song, eBoard, Section
 
@@ -167,6 +168,7 @@ def index(request):
     :param request: Request
     :return: Renders the landing page
     """
+    IPCatch.IPCatcher(request)
     if mobileBrowser(request):
         return render(request, "index/m_index.html")
     else:
