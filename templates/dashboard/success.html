@@ -1,0 +1,73 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">{{ song }}</h1></div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h3><p class="text-success">Section</p></h3>
+            </div>
+            <div class="col-md-4">
+                <h3><p class="text-success">JPG</p></h3>
+            </div>
+            <div class="col-md-4">
+                <h3><p class="text-success">PDF</p></h3>
+            </div>
+        </div>
+        <hr>
+        {% for part in parts %}
+            <div class="row text-center">
+                <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">{{ part }}</div>
+                <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">
+                    <a href="/music/{{ song.slug }}/show/{{ part|add:".jpg" }}/" target="_blank"><i
+                            class="fa fa-fw fa-picture-o"></i>{{ part }}</a>
+                </div>
+                <div class="col-md-4" style="margin-top: 1%; margin-bottom: 1%">
+                    <a href="/music/{{ song.slug }}/{{ part|add:".pdf" }}/" target="_blank"><i
+                            class="fa fa-fw fa-file"></i>{{ part }}</a>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <h3><p class="text-success">Audio File</p></h3>
+        </div>
+        {% if audio %}
+            {% for file in audio %}
+                <div class="col-md-4"> {{ file }}</div>
+                <div class="col-md-4">
+                    <audio controls>
+                        <source src={% static "music/"|add:song.title|add:"/"|add:file %} type="audio/mpeg">
+                        <p>Your user agent does not support the HTML5 Audio element.</p>
+                    </audio>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-md-4"> None</div>
+        {% endif %}
+    </div>
+    <div class="row text-left">
+        <div class="col-sm-12">
+            <h3><p class="text-success">Special Notes</p></h3>
+        </div>
+        <div class="col-md-4">{{ song.notes }} </div>
+    </div>
+    <html>
+    <body>
+    <br/>
+    <br/>
+    {% if song.video %}
+        <iframe width="560" height="315" src={{ ""|add:song.video }} frameborder="0" allowfullscreen></iframe>
+    {% endif %}
+    </body>
+    </html>
+{% endblock %}

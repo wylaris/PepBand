@@ -1,0 +1,23 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">{{ songs }}</h1></div>
+    </div>
+    <div class="row text-center">
+        <table id="songTable" align="center" style="text-align: left">
+            {% for part in parts %}
+                <tr>
+                    <td><a href="/music/{{ slug }}/show/{{ part }}/" target="_blank"><i class="fa fa-fw fa-picture-o"></i>{{ part }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

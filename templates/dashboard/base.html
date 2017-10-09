@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png"
+          href="{% static "media/favicon.ico" %}"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>RIT Pepband Resource Center</title>
+
+
+    <!-- Bootstrap Core CSS -->
+    <
+    <link href="{% static "admin/css/bootstrap.min.css" %}" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="{% static "admin/css/sb-admin.css" %}" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="{% static "admin/css/plugins/morris.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css">
+
+    {% block styles %}
+        <link href={% static "css/info.css" %} rel="stylesheet">
+    {% endblock %}
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div id="featureimage" style="text-align: center">
+            <a href="/home"> <img height="100px" width="auto" style="margin: 0 auto 0;"
+                 src={% static "media/banner.jpg" %} alt="NA"></a>
+        </div>
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+            </button>
+            <!--<a class="navbar-brand" href="/home">RIT Pepband</a>-->
+
+        </div>
+
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                {% block options %}
+
+                    {#                    <li>#}
+                    {#                        <a href="javascript:;" data-toggle="collapse" data-target="#mess"><i#}
+                    {#                                class="fa fa-fw fa-folder-open"></i> Information<i#}
+                    {#                                class="fa fa-fw fa-caret-down"></i></a>#}
+                    {#                        <ul id="mess" class="collapse">#}
+                    <li>
+                        <a href="/home"><i class="fa fa-fw fa-home"></i> Home</a>
+                    </li>
+                    {% for group in user.groups.all %}
+                        {% if group.name == 'Admin' %}
+                            <li>
+                                <a href="/admin_page"><i class="fa fa-fw fa-user"></i> Admin Page</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == 'President' %}
+                            <li>
+                                <a href="/president"><i class="fa fa-fw fa-user"></i> President Page</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% for group in user.groups.all %}
+                        {% if group.name == 'Conductor' %}
+                            <li>
+                                <a href="/conductor"><i class="fa fa-fw fa-user"></i> Conductor Page</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    <li>
+                        <a href="/eboard"><i class="fa fa-fw fa-user"></i> EBoard</a>
+                    </li>
+                    <li>
+                        <a href="/section_leaders"><i class="fa fa-fw fa-user"></i> Section Leaders</a>
+                    </li>
+                    <li>
+                        <a href="/documents"><i class="fa fa-fw fa-file"></i> Documents</a>
+                    </li>
+                    <li>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9kwk24fxRvzLo_IPwqgV_zjSohBUpkCMt6kunLB4yVsMJyQ/viewform?usp=sf_link"
+                           target="_blank"> <i class="fa fa-fw fa-lightbulb-o"></i> BUG REPORT <br> (BETA ONLY)</a>
+                    </li>
+                    </ul>
+                    </li>
+                {% endblock %}
+
+            <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+            {% block content %}
+                <div class="footer">This footer will always be positioned at the bottom of the page, but <strong>not
+                    fixed</strong>.
+                </div>
+            {% endblock %}
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+
+
+</div>
+
+<!-- jQuery -->
+<script src="{% static  "admin/js/jquery.js" %}"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="{% static "admin/js/bootstrap.min.js" %}"></script>
+{% comment %}
+<script type="text/javascript" src="{% static "js/messages.js" %}"></script>
+{% endcomment %}
+<!-- Morris Cadmin/harts JavaScript -->
+<!-- <script src="{% static "admin/js/plugins/morris/raphael.min.js" %}"></script>
+    <script src="{% static "admin/js/plugins/morris/morris.min.js" %}"></script>
+    <script src="{% static "admin/js/plugins/morris/morris-data.js" %}"></script>-->
+
+
+{% block scripts %}
+    {% comment %}<script type="text/javascript" src="{% static "js/messages.js" %}"></script>{% endcomment %}
+{% endblock %}
+
+
+</body>
+<div id="footer" style="margin-left:0px; text-align: center; color: white">
+    Updated for the 2017/2018 Academic Year<br>
+    For Use by the RIT Pep Band Only
+</div>
+</html>

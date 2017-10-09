@@ -1,0 +1,20 @@
+{% extends base %} <!--extends the base layout for the website to the page-->
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row"> <!--Sets title for page-->
+        <div class="col-md-12"><h1 class="text-center">Memes</h1></div>
+    </div>
+    <div class="row text-center"> <!--sets image to 1Teryn as first image on page-->
+        <img style="display: block; max-width: 100%; margin: 0 auto;" src={% static "media/1Teryn.JPG" %} alt="NA">
+        <p></p>
+        {% for entries in list %} <!--sets up each image in the file to be displayed after 1Teryn-->
+            <img style="display: block; max-width: 100%; margin: 0 auto"  src={% static "media/"|add:entries %} alt="NA">
+            <p></p>
+        {% endfor %}
+{% endblock %}

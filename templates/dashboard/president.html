@@ -1,0 +1,128 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>Edit Information</h2>
+        <div class="panel-group">
+            <div class="panel panel-default" onclick="">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">Music</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <h3><p class="text-success">Title</p></h3>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><p class="text-success">Status</p></h3>
+                        </div>
+                        <div class="col-md-4">
+                            <h3><p class="text-success">Notes</p></h3>
+                        </div>
+                    </div>
+                    <hr>
+                    {% for entry in list %}
+                        <div class="row text-center">
+                            <div class="col-sm-4">{{ entry.title }}</div>
+                            <div class="col-sm-4">
+                                <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
+                                       value={{ entry.status }} onclick="location.href
+                                = '/conductor/{{ entry.slug }}';">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="button" style="margin: -10px" class="btn btn-sm btn-primary" value="Change"
+                                       onclick="location.href
+                                               = '/conductor/{{ entry.slug }}/change';">
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse2">Eboard</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Position</p></h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Name</p></h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Cell</p></h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Email</p></h3>
+                        </div>
+                    </div>
+                    <hr>
+                    {% for entry in eboard %}
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <input type="button" style="margin: -10px;" class="btn btn-sm btn-primary"
+                                       value={{ entry.slug }} onclick="location.href
+                                = '/president/eboard/{{ entry.id }}';">
+                            </div>
+                            <div class="col-md-3">{{ entry }}</div>
+                            <div class="col-md-3"><a href="tel:{{ entry.cell }}">{{ entry.cell }}</a></div>
+                            <div class="col-md-3"><a href="mailto:{{ entry.email }}" target="_top">{{ entry.email }}</a>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse3">Section Leaders</a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="row text-center">
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Section</p></h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Name</p></h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Cell</p></h3>
+                        </div>
+                        <div class="col-md-3">
+                            <h3><p class="text-success">Email</p></h3>
+                        </div>
+                    </div>
+                    <hr>
+                    {% for leader in section %}
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
+                                       value={{ leader.section }} onclick="location.href
+                                = '/president/section/{{ leader.id }}';">
+                            </div>
+                            <div class="col-md-3">{{ leader }}</div>
+                            <div class="col-md-3"><a href="tel:{{ leader.cell }}">{{ leader.cell }}</a></div>
+                            <div class="col-md-3"><a href="mailto:{{ leader.email }}"
+                                                     target="_top">{{ leader.email }}</a></div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

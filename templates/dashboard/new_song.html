@@ -1,0 +1,72 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static "css/profile.css" %}">
+{% endblock %}
+
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav side-nav">
+
+{% block content %}
+    {% load myfilters %}
+    <div class="container">
+
+        <form class="well form-horizontal" action="/new_song" method="post"
+              id="contact_form">
+            {% csrf_token %}
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Add a New Song</legend>
+
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Song Title</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                            {{ form.name|addcpt:"form-control, Enter the Song Title, text" }}
+                        </div>
+                        <div class="alert-danger">
+                            <strong>{{ form.errors.title }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Will it be Public?</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                            {{ form.address|addcpt:"form-control, Enter True or False, text" }}
+                        </div>
+
+                        <div class="alert-danger">
+                            <strong>{{ form.errors.public }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Success message -->
+                {% if success %}
+                    <div class="alert alert-success" role="alert">Success <i class="glyphicon glyphicon-thumbs-up"></i>
+                        Your changes have been commited!
+                    </div>
+                {% endif %}
+                <!-- Button -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-warning">Update <span
+                                class="glyphicon glyphicon-send"></span></button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+
+    </div>
+{% endblock %}

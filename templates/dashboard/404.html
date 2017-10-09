@@ -1,0 +1,14 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <h1>404</h1>
+    <!-- Error image and text presented for when a 404 error occurs -->
+    <p>You broke it and we don't care. Please let no one know</p>
+    <img src={% static "media/sadtiger.jpg" %} alt="NA">
+{% endblock %}

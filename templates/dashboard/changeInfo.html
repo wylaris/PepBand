@@ -1,0 +1,17 @@
+{% extends "dashboard/base.html" %}
+
+
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static "css/profile.css" %}">
+{% endblock %}
+
+{% block content %}
+    <h1>Update Information</h1>
+
+<form method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update Infomation"/>
+
+</form>
+{% endblock %}

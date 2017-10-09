@@ -1,0 +1,46 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">Music</h1></div>
+    </div>
+    <div class="row text-center">
+        <input type="text" id="search" onkeyup="myFunction()" placeholder="Search for titles...">
+
+        <table id="songTable" align="center" style="text-align: left">
+            {% for entries in list %}
+                <tr>
+                    <td><a href={{ entries.slug }}><i class="fa fa-fw fa-file"></i> {{ entries.title }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        function myFunction() {
+            // Declare variables
+            var input, filter, table, tr, td, i;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("songTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends base %}
+
+{% block styles %}
+    {% load static %}
+    <!-- Custom styles for this template -->
+    <link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><h1 class="text-center">Music</h1></div>
+            <form method="POST" action="">
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-12">
+                <h3><p class="text-success">Section</p></h3>
+            </div>
+        </div>
+        <hr>
+        {% for section in sections %}
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <input type="button" class="btn btn-sm btn-primary" value={{ section }} onclick="location.href
+                    = '/pick_section/{{ section }}/download';">
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
