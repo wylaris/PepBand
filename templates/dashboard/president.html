@@ -7,16 +7,19 @@
 {% endblock %}
 
 {% block content %}
+    <!-- sets up the layout and capabilities possible for the president -->
     <div class="container">
         <h2>Edit Information</h2>
         <div class="panel-group">
             <div class="panel panel-default" onclick="">
+                <!-- sets up collapsed look for music tab, along with functionality for each possible change -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse1">Music</a>
                     </h4>
                 </div>
                 <div id="collapse1" class="panel-collapse collapse">
+                    <!-- sets up the layout for information presented, so it may be modified by the president -->
                     <div class="row text-center">
                         <div class="col-md-4">
                             <h3><p class="text-success">Title</p></h3>
@@ -30,6 +33,7 @@
                     </div>
                     <hr>
                     {% for entry in list %}
+                    <!-- pulls list of music for modifications to occur by president -->
                         <div class="row text-center">
                             <div class="col-sm-4">{{ entry.title }}</div>
                             <div class="col-sm-4">
@@ -48,12 +52,14 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <!-- sets up collapsed look for eboard options, along with ability for changes to occur -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse2">Eboard</a>
                     </h4>
                 </div>
                 <div id="collapse2" class="panel-collapse collapse">
+                    <!-- sets up the layout for the display of eboard members information -->
                     <div class="row text-center">
                         <div class="col-md-3">
                             <h3><p class="text-success">Position</p></h3>
@@ -71,6 +77,8 @@
                     <hr>
                     {% for entry in eboard %}
                         <div class="row text-center">
+                            <!-- sets up list pull for eboards information and puts it in the layout designated above,
+                            along with sets up button control for changes to occur --> -->
                             <div class="col-md-3">
                                 <input type="button" style="margin: -10px;" class="btn btn-sm btn-primary"
                                        value={{ entry.slug }} onclick="location.href
@@ -86,6 +94,7 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <!-- Sets up collapsed look for section leaders tab and allows for changes to occur to tab -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse3">Section Leaders</a>
@@ -93,6 +102,7 @@
                 </div>
                 <div id="collapse3" class="panel-collapse collapse">
                     <div class="row text-center">
+                        <!-- sets up layout for presentation of section leaders information -->
                         <div class="col-md-3">
                             <h3><p class="text-success">Section</p></h3>
                         </div>
@@ -109,6 +119,7 @@
                     <hr>
                     {% for leader in section %}
                         <div class="row text-center">
+                            <!-- sets up database pull for section leaders information, along with button controls for changes to be made -->
                             <div class="col-md-3">
                                 <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
                                        value={{ leader.section }} onclick="location.href

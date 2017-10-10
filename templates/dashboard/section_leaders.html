@@ -15,6 +15,7 @@
             </form>
         </div>
         <div class="row text-center">
+            <!-- sets up text outlined for section leader's display of information -->
             <div class="col-md-2">
                 <h3><p class="text-success"> </p></h3>
             </div>
@@ -33,6 +34,7 @@
         </div>
         <hr>
         {% for leader in section %}
+        <!-- sets up layout for the pull to the reference list of information for section leaders -->
             <div class="row text-center">
                 <div class="col-md-2">
                     <img src={% static "pictures/"|add:leader.section|add:".jpg" %} alt="{{ entry.slug }}"

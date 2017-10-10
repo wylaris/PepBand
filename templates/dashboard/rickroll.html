@@ -1,0 +1,13 @@
+{% extends base %}
+
+{% block styles %}
+{% load static %}
+<!-- Custom styles for this template -->
+<link href={% static "css/info.css" %} rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<!-- auto play designated link once ariving on link (aka rickrolled) -->
+<iframe width="100%" height="1000px" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+        frameborder="0" allowfullscreen></iframe>
+{% endblock %}

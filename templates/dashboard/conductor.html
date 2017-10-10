@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+    <!-- sets up layout for the list of music and controls capable for the conductor to do -->
     <div class="container">
         <div class="row">
             <div class="col-md-12"><h1 class="text-center">Music</h1></div>
@@ -26,6 +27,7 @@
 {#                = '/conductor/change_all/Private/';">#}
 {#            </div>#}
         </div>
+        <!-- sets up layout for the extras the conductor is able to change for each song on the database -->
         <div class="row text-center">
             <div class="col-md-4">
                 <h3><p class="text-success">Title</p></h3>
@@ -39,6 +41,7 @@
         </div>
         <hr>
         {% for entry in list %}
+            <!-- sets up button control for outlined layout set up above -->
             <div class="row text-center">
                 <div class="col-md-4">{{ entry.title }}</div>
                 <div class="col-md-4">
