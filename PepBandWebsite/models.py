@@ -1,3 +1,6 @@
+from django.db import models
+
+# Create your models here.
 """
 Models for the system that control the database
 """
