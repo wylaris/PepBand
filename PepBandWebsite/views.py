@@ -741,4 +741,12 @@ def downloadParts(request, section):
     zf.close()
     filepath = "Server/static/zipFiles/" + staticSection + ".zip"
     return serve(request, os.path.basename(filepath), os.path.dirname(filepath))
+	
+@user_passes_test(checkMember, login_url='/')
+def chants(request):
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/chants.html", {"list": totalSongList, "base": base})
 
