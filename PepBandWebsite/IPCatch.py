@@ -8,9 +8,6 @@ def IPCatcher(request):
     if ip is not None:
         print("We have an IP address for user")
         print(ip)
-        logging.basicConfig(filename='log_recording.txt',
-                            level=logging.DEBUG,format='%(asctime)s %(message)s',
-                                                              datefmt='%m/%d/%Y %I:%M:%S %p')
         logging.info('User data is being collected')
 
     else:
