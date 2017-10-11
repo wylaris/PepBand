@@ -52,3 +52,5 @@ Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 *.xml
 .idea/workspace.xml
 .idea/workspace.xml
+*.pyc
+*.sqlite3
