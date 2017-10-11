@@ -51,6 +51,8 @@ Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 *.xml
 *.xml
 .idea/workspace.xml
-.idea/*
+
 manage.py
-db.sqlite3
+*.pyc
+*.sqlite3
+>>>>>>> upstream/master

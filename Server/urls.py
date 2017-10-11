@@ -49,7 +49,7 @@ urlpatterns = [
     url(r'^pick_section/$', views.pickSection, name='pick_section'),  # URL for the pick section page
     url(r'^pick_section/(?P<section>.*)/download/$', views.downloadParts, name='downlaodParts'),  # URL for the download music page
     url(r'^Music/$', views.rickroll, name='rickroll'), #  Url for capital Music that just rickrolls the user
-	  url(r'^chants/$', views.chants, name='chants'),# URL for the chants page
+	url(r'^chants/$', views.chants, name='chants'),# URL for the chants page
 ]
 
 handler404 = views.custom404
