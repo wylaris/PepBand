@@ -52,8 +52,8 @@ Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 .idea/workspace.xml
 
 manage.py
-*.sqlite3
+db.sqlite3
 Server/static/music/
-Server/settings.py
 user_data.log
 *.pyc
+.gitignore
