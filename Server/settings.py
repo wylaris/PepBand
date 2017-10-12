@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = '+yzy8rt%87ovu7@w2%g1fng_0&!%xe%_uqzgdc8!lyu1fxbfcn'
+SECRET_KEY = ''
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -134,7 +134,7 @@ LOGGING = {
     'disable_existing_loggers': False,
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': 'user_data.log',
         },
@@ -142,8 +142,8 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['file'],
-            'level': 'DEBUG',
-            'propagate': False,
+            'level': 'INFO',
+            'propagate': True,
         },
         'user_data': {
             'handlers': ['file'],
