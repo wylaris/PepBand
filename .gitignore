@@ -55,4 +55,10 @@ Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 manage.py
 *.pyc
 *.sqlite3
->>>>>>> upstream/master
+*.pyc
+*.pyc
+*.pyc
+PepBandWebsite/__pycache__/__init__.cpython-36.pyc
+PepBandWebsite/__pycache__/__init__.cpython-36.pyc
+PepBandWebsite/__pycache__/__init__.cpython-36.pyc
+PepBandWebsite/__pycache__/forms.cpython-36.pyc
