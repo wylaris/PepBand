@@ -52,9 +52,8 @@ Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 .idea/workspace.xml
 
 manage.py
-*.pyc
 *.sqlite3
 Server/static/music/
-PepBandWebsite/__pycache__/__init__.cpython-36.pyc
-Server/templatetags/__pycache__/__init__.cpython-36.pyc
-PepBandWebsite/migrations/__pycache__/0002_eboard.cpython-36.pyc
+Server/settings.py
+user_data.log
+*.pyc
