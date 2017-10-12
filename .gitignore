@@ -49,17 +49,12 @@ Temporary Items
 *.mp3
 Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 *.xml
-*.xml
 .idea/workspace.xml
 
 manage.py
 *.pyc
 *.sqlite3
-*.pyc
-*.pyc
-*.pyc
+Server/static/music/
 PepBandWebsite/__pycache__/__init__.cpython-36.pyc
-PepBandWebsite/__pycache__/__init__.cpython-36.pyc
-PepBandWebsite/__pycache__/__init__.cpython-36.pyc
-PepBandWebsite/__pycache__/forms.cpython-36.pyc
-PepBandWebsite/migrations/__pycache/*
+Server/templatetags/__pycache__/__init__.cpython-36.pyc
+PepBandWebsite/migrations/__pycache__/0002_eboard.cpython-36.pyc
