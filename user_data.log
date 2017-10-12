@@ -1,0 +1,57 @@
+Exception while resolving variable 'form' in template 'index/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [form] in '[{\'True\': True, \'False\': False, \'None\': None}, {\'csrf_token\': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x0477E4B0>>, \'request\': <WSGIRequest: GET \'/\'>, \'user\': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x0477E300>>, \'perms\': <django.contrib.auth.context_processors.PermWrapper object at 0x047F4350>, \'messages\': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x04785190>, \'DEFAULT_MESSAGE_LEVELS\': {\'DEBUG\': 10, \'INFO\': 20, \'SUCCESS\': 25, \'WARNING\': 30, \'ERROR\': 40}}, {}, {\'block\': <Block Node: content. Contents: [<TextNode: \'\\n    <body background="ht\'>, <IfNode>, <TextNode: \'\\n\\n                    <fo\'>, <django.template.defaulttags.CsrfTokenNode object at 0x047E0E50>, <TextNode: \'\\n                        \'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\'>, <TextNode: \'\\n\\n    </div>\\n\\n\\n    <div c\'>]>}]'
+Exception while resolving variable 'pound' in template 'index/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\context.py", line 87, in __getitem__
+    raise KeyError(key)
+KeyError: 'pound'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 888, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'pound'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'pound'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\scott\AppData\Local\Programs\Python\Python36-32\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [pound] in "[{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'Sh2YyMQfyaFB9DijeoQj9NFrUWx1ARojl6hZzY4EXYhvd7WmGZJOB3lj79q8WyeH'>, 'request': <WSGIRequest: GET '/'>, 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x0477E300>>, 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x047F4350>, 'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x04785190>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}}, {}, {'block': <Block Node: scripts. Contents: [<TextNode: '\\n    <script src='>, <django.templatetags.static.StaticNode object at 0x047F1950>, <TextNode: '></script>\\n\\n    <script>\\n'>, <IfNode>, <TextNode: '\\n    </script>\\n\\n'>]>}]"
+"GET / HTTP/1.1" 200 4150
