@@ -57,3 +57,6 @@ Server/static/music/
 user_data.log
 *.pyc
 .gitignore
+.pyc
+.idea
+.xml
