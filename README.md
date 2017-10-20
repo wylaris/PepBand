@@ -4,4 +4,4 @@ Requires:
     Django 11
     SQLite3
     Python
-    Dropbox
+    
