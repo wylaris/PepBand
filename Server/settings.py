@@ -29,7 +29,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
-# Application definition
+# Application definition.
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -128,3 +128,27 @@ MEDIA_ROOT = '../Server/static/media/'
 MEDIA_URL = '../media/'
 STATIC_URL = '/static/'
 # Additional locations of static files
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': 'user_data.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        'user_data': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}

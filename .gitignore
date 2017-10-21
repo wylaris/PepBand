@@ -49,8 +49,14 @@ Temporary Items
 *.mp3
 Server/static/music/Beverly Hills/pdf/AltoSax.pdf
 *.xml
-*.xml
 .idea/workspace.xml
-.idea/workspace.xml
+
+manage.py
+db.sqlite3
+Server/static/music/
+user_data.log
 *.pyc
-*.sqlite3
+.gitignore
+.pyc
+.idea
+.xml

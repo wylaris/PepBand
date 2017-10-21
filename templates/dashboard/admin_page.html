@@ -8,9 +8,11 @@
 
 {% block content %}
     <div class="container">
+        <!-- sets up layout and capabilities possible for the admin of the page -->
         <h2>Edit Entries</h2>
         <div class="panel-group">
             <div class="panel panel-default">
+                <!-- sets up collapse of option for music -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse1">Music</a>
@@ -18,6 +20,7 @@
                 </div>
                 <div id="collapse1" class="panel-collapse collapse">
                     <div class="row text-center">
+                        <!-- sets up layout for music information displayed -->
                         <div class="col-md-3">
                             <h3><p class="text-success">Title</p></h3>
                         </div>
@@ -34,6 +37,7 @@
                     <hr>
                     {% for entry in list %}
                         <div class="row text-center">
+                            <!-- sets up button control for changes along with pull to database for music -->
                             <div class="col-sm-3">{{ entry.title }}</div>
                             <div class="col-sm-3">
                                 <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
@@ -56,12 +60,14 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <!-- sets up layout and collapse of change option 2 (EBoard) -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse2">Eboard</a>
                     </h4>
                 </div>
                 <div id="collapse2" class="panel-collapse collapse">
+                    <!-- sets up layout for eboard's display of information -->
                     <div class="row text-center">
                         <div class="col-md-3">
                             <h3><p class="text-success">Position</p></h3>
@@ -79,6 +85,7 @@
                     <hr>
                     {% for entry in eboard %}
                         <div class="row text-center">
+                            <!-- sets up button control and database pull for eboard members -->
                             <div class="col-md-3">
                                 <input type="button" style="margin: -10px;" class="btn btn-sm btn-primary"
                                        value={{ entry.slug }} onclick="location.href
@@ -93,13 +100,15 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-default">'
+                <!-- sets up collapse and layout for section leaders information -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse3">Section Leaders</a>
                     </h4>
                 </div>
                 <div id="collapse3" class="panel-collapse collapse">
+                    <!-- sets up layout for presentation of section leaders information -->
                     <div class="row text-center">
                         <div class="col-md-3">
                             <h3><p class="text-success">Section</p></h3>
@@ -117,6 +126,7 @@
                     <hr>
                     {% for leader in section %}
                         <div class="row text-center">
+                            <!-- sets up button functionality and database pull for section leaders -->
                             <div class="col-md-3">
                                 <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"
                                        value={{ leader.section }} onclick="location.href
@@ -132,12 +142,14 @@
                 </div>
             </div>
             <div class="panel panel-default">
+                <!-- Sets up password control and layout for server entrance (collapses info as well) -->
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#collapse4">Change Passwords</a>
                     </h4>
                 </div>
                 <div id="collapse4" class="panel-collapse collapse">
+                    <!-- sets up layout for username options and their base functionalities -->
                     <div class="row text-center">
                         <div class="col-md-12">
                             <h3><p class="text-success">Username</p></h3>
@@ -145,6 +157,8 @@
                     </div>
                     <hr>
                     {% for user in users %}
+                    <!-- sets up button control for the ability for changes to occur for passwords,
+                    along with changes passwords in the database -->
                         <div class="row text-center">
                             <div class="col-md-12">
                                 <input type="button" style="margin: -10px" class="btn btn-sm btn-primary"

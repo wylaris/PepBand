@@ -24,7 +24,7 @@ urlpatterns = [
     #url(r'^login/$', views.login, name='login'), #URL for the login page (not being used)
     url(r'^auth/$', views.auth_view, name='auth_view'), #URL for the authentication page
     url(r'^404/$', views.notFound, name='notFound'),  # URL for the 404 page
-    url(r'^500/$', views.custom500, name='500'),  # URL for the 404 page
+    url(r'^500/$', views.custom500, name='500'),  # URL for the 500 page
     url(r'^eboard/$', views.eboard, name='eboard'),  #URL for the eboard page
     url(r'^section_leaders/$', views.section_leaders, name='section_leaders'), #URL for the section leader page
     url(r'^documents/$', views.constitution, name='documents'),  #URL for the documents page
@@ -48,6 +48,7 @@ urlpatterns = [
     url(r'^president/section/(?P<id>[\w\-]+)/$', views.changeSection, name='songs'),  # URL for the page that changes fields for a section leader entry
     url(r'^pick_section/$', views.pickSection, name='pick_section'),  # URL for the pick section page
     url(r'^pick_section/(?P<section>.*)/download/$', views.downloadParts, name='downlaodParts'),  # URL for the download music page
+    url(r'^Music/$', views.rickroll, name='rickroll'), #  Url for capital Music that just rickrolls the user
 	url(r'^chants/$', views.chants, name='chants'),# URL for the chants page
 ]
 

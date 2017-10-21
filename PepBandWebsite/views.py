@@ -26,6 +26,7 @@ from django.utils.encoding import smart_str
 from django.views.generic import UpdateView
 from django.views.static import serve
 
+from PepBandWebsite import IPCatch
 from PepBandWebsite.forms import changeEBoard, changeSong
 from PepBandWebsite.models import Song, eBoard, Section
 
@@ -42,7 +43,6 @@ global totalSongList
 
 publicSongList = []
 totalSongList = []
-
 # def foo():
 # Generates the list of memes from the pictures in the static folder.  It skips unwanted pictures.
 for file in os.listdir('Server/static/media'):
@@ -171,6 +171,7 @@ def index(request):
     :param request: Request
     :return: Renders the landing page
     """
+    IPCatch.IPCatcher(request)
     if mobileBrowser(request):
         return render(request, "index/m_index.html")
     else:
@@ -750,3 +751,15 @@ def chants(request):
         base = "dashboard/base.html"
     return render(request, "dashboard/chants.html", {"list": totalSongList, "base": base})
 
+@user_passes_test(checkMember, login_url='/login/')
+def rickroll(request):
+    """
+    Dashboard for the conductor that allows for the altering of song fields
+    :param request: Request
+    :return: Renders the conductor dashboard
+    """
+    if mobileBrowser(request):
+        base = "dashboard/m_base.html"
+    else:
+        base = "dashboard/base.html"
+    return render(request, "dashboard/rickroll.html", {"list": totalSongList, "base": base})
